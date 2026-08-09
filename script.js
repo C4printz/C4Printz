@@ -393,3 +393,26 @@ function escapeHTML(text) {
 ========================= */
 
 updateCart();
+let uploadedImage = null;
+
+function previewImage(event) {
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    uploadedImage = file;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const preview = document.getElementById("filePreview");
+
+        preview.src = e.target.result;
+        preview.style.display = "block";
+    };
+
+    reader.readAsDataURL(file);
+
+    document.getElementById("fileName").textContent =
+        "Selected: " + file.name;
+}
