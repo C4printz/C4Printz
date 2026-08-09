@@ -471,23 +471,20 @@
 
         <label class="upload-button">
 
-            Choose Image
+            <label class="upload-button">
+    Upload Image
+    <input
+        type="file"
+        id="customFile"
+        accept="image/*"
+        onchange="previewImage(event)"
+        hidden
+    >
+</label>
 
-            <input
-                type="file"
-                id="customFile"
-                accept="image/*"
-                onchange="previewImage(event)"
-            >
+<img id="filePreview">
 
-        </label>
-
-        <img
-            id="filePreview"
-            alt="Preview"
-        >
-
-        <div id="fileName"></div>
+<p id="fileName"></p>
 
 
         <label>
