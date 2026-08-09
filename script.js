@@ -1,438 +1,164 @@
 let cart = [];
 
-let currentProduct = "";
+let currentProduct = null;
 
 
-const products = {
+/* =========================
+   PRODUCT MODAL
+========================= */
 
-    dragon: {
-        title: "Mini Dragon",
-        tag: "POPULAR",
-        description:
-            "A fun articulated dragon that's perfect for your desk or shelf.",
-        image: "🐉"
-    },
+function viewProduct(name, price, image, description) {
 
-    phone: {
-        title: "Phone Stand",
-        tag: "USEFUL",
-        description:
-            "A clean and sturdy 3D printed stand for your phone.",
-        image: "📱"
-    },
+    currentProduct = {
+        name,
+        price,
+        image,
+        description
+    };
 
-    costume: {
-        title: "Costume Pieces",
-        tag: "CUSTOM",
-        description:
-            "3D printed costume parts and accessories.",
-        image: "👕"
-    },
+    document.getElementById("modalName").textContent = name;
 
-    octopus: {
-        title: "Flexi Octopus",
-        tag: "FLEXI",
-        description:
-            "A flexible articulated octopus that's fun to play with.",
-        image: "🐙"
-    },
+    document.getElementById("modalDescription").textContent =
+        description;
 
-    dinosaur: {
-        title: "Articulated Dinosaur",
-        tag: "NEW",
-        description:
-            "A fun articulated dinosaur for collectors.",
-        image: "🦖"
-    },
+    document.getElementById("modalPrice").textContent =
+        "$" + price.toFixed(2);
 
-    frog: {
-        title: "Flexi Frog",
-        tag: "FLEXI",
-        description:
-            "A small articulated frog that's fun to play with.",
-        image: "🐸"
-    },
+    document.getElementById("modalImage").textContent =
+        image;
 
-    controller: {
-        title: "Controller Stand",
-        tag: "GAMING",
-        description:
-            "Keep your gaming controller organized and off your desk.",
-        image: "🎮"
-    },
-
-    planter: {
-        title: "Mini Planter",
-        tag: "HOME",
-        description:
-            "A small decorative planter for your desk.",
-        image: "🪴"
-    },
-
-    fidget: {
-        title: "Fidget Toy",
-        tag: "FUN",
-        description:
-            "A satisfying little 3D printed fidget.",
-        image: "🧩"
-    },
-
-    keychain: {
-        title: "Custom Keychain",
-        tag: "SMALL",
-        description:
-            "Small personalized 3D printed keychains.",
-        image: "🔑"
-    }
-
-};
-
-
-/* PRODUCT WINDOW */
-
-function openProduct(product) {
-
-    currentProduct = product;
-
-    const data = products[product];
-
-    document.getElementById("modalTitle").innerText =
-        data.title;
-
-    document.getElementById("modalTag").innerText =
-        data.tag;
-
-    document.getElementById("modalDescription").innerText =
-        data.description;
-
-    document.getElementById("modalImage").innerText =
-        data.image;
-
-    document.getElementById("modalSize").value = "5";
-
-    document.getElementById("modalPrice").innerText =
-        "$5";
-
-    document.getElementById("productModal")
-        .classList.add("show");
-
+    document
+        .getElementById("productModal")
+        .classList
+        .add("show");
 }
 
 
 function closeProduct() {
 
-    document.getElementById("productModal")
-        .classList.remove("show");
+    document
+        .getElementById("productModal")
+        .classList
+        .remove("show");
 
 }
 
 
-/* PRICE */
+function closeModal(event) {
 
-function updatePrice() {
-
-    const price =
-        document.getElementById("modalSize").value;
-
-    document.getElementById("modalPrice").innerText =
-        "$" + price;
+    if (event.target.classList.contains("modal")) {
+        event.target.classList.remove("show");
+    }
 
 }
 
 
-/* ADD PRODUCT */
+/* =========================
+   ADD PRODUCT
+========================= */
 
-function addProductToCart() {
+function addModalProduct() {
 
-    const size =
-        document.getElementById("modalSize");
-
-    const color =
-        document.getElementById("modalColor");
-
+    if (!currentProduct) return;
 
     cart.push({
-
-        name:
-            products[currentProduct].title,
-
-        size:
-            size.options[size.selectedIndex].text,
-
-        color:
-            color.value,
-
-        price:
-            Number(size.value),
-
-        type:
-            "product"
-
+        name: currentProduct.name,
+        price: currentProduct.price
     });
-
 
     updateCart();
 
     closeProduct();
 
     openCart();
-
 }
 
 
-/* CUSTOM FILE */
-
-function showFile() {
-
-    const file =
-        document.getElementById("customFile").files[0];
-
-
-    if (!file) {
-
-        return;
-
-    }
-
-
-    document.getElementById("fileName").innerText =
-        "📎 " + file.name;
-
-
-    if (file.type.startsWith("image/")) {
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload =
-            function(event) {
-
-                const preview =
-                    document.getElementById("filePreview");
-
-                preview.src =
-                    event.target.result;
-
-                preview.style.display =
-                    "block";
-
-            };
-
-
-        reader.readAsDataURL(file);
-
-    }
-
-}
-
-
-/* CUSTOM PRINT */
-
-function addCustomToCart() {
-
-    const file =
-        document.getElementById("customFile").files[0];
-
-
-    const size =
-        document.getElementById("customSize");
-
-
-    const notes =
-        document.getElementById("customNotes").value;
-
-
-    if (!file) {
-
-        alert(
-            "Please choose your 3D print file first!"
-        );
-
-        return;
-
-    }
-
-
-    cart.push({
-
-        name:
-            "Custom 3D Print",
-
-        size:
-            size.options[size.selectedIndex].text,
-
-        color:
-            "Custom",
-
-        price:
-            Number(size.value),
-
-        fileName:
-            file.name,
-
-        notes:
-            notes,
-
-        type:
-            "custom"
-
-    });
-
-
-    updateCart();
-
-    openCart();
-
-}
-
-
-/* CART */
-
-function openCart() {
-
-    document.getElementById("cartModal")
-        .classList.add("show");
-
-}
-
-
-function closeCart() {
-
-    document.getElementById("cartModal")
-        .classList.remove("show");
-
-}
-
+/* =========================
+   CART
+========================= */
 
 function updateCart() {
 
     const container =
         document.getElementById("cartItems");
 
+    const count =
+        document.getElementById("cartCount");
 
-    document.getElementById("cartCount").innerText =
-        cart.length;
+    const total =
+        document.getElementById("cartTotal");
+
+
+    count.textContent = cart.length;
 
 
     if (cart.length === 0) {
 
         container.innerHTML =
-            "<p class='empty-cart'>Your cart is empty.</p>";
+            `<div class="empty-cart">
+                Your cart is empty.
+            </div>`;
 
-        document.getElementById("cartTotal").innerText =
-            "$0";
+        total.textContent = "$0.00";
 
         return;
-
     }
 
 
     container.innerHTML = "";
 
-    let total = 0;
+
+    let totalPrice = 0;
 
 
     cart.forEach((item, index) => {
 
-        total += item.price;
+        totalPrice += item.price;
 
 
-        const div =
+        const element =
             document.createElement("div");
 
-
-        div.className =
-            "cart-item";
+        element.className = "cart-item";
 
 
-        if (item.type === "custom") {
+        element.innerHTML = `
 
-            div.innerHTML = `
-
-                <div class="cart-item-info">
-
-                    <strong>
-                        🖨️ Custom 3D Print
-                    </strong>
-
-                    <small>
-                        ${item.size}
-                    </small>
-
-                    <small>
-                        📎 ${escapeHTML(item.fileName)}
-                    </small>
-
-                    ${
-                        item.notes
-                        ?
-                        `<small>📝 ${escapeHTML(item.notes)}</small>`
-                        :
-                        ""
-                    }
-
-                </div>
+            <div class="cart-item-info">
 
                 <strong>
-                    $${item.price}
+                    ${escapeHTML(item.name)}
                 </strong>
 
-                <button
-                    onclick="removeItem(${index})"
-                >
-                    ✕
-                </button>
+                <small>
+                    C4Printz
+                </small>
 
-            `;
+            </div>
 
-        } else {
+            <span class="cart-item-price">
+                $${item.price.toFixed(2)}
+            </span>
 
-            div.innerHTML = `
+            <button
+                onclick="removeItem(${index})"
+            >
+                ×
+            </button>
 
-                <div class="cart-item-info">
-
-                    <strong>
-                        ${escapeHTML(item.name)}
-                    </strong>
-
-                    <small>
-                        ${escapeHTML(item.size)}
-                    </small>
-
-                    <small>
-                        🎨 ${escapeHTML(item.color)}
-                    </small>
-
-                </div>
-
-                <strong>
-                    $${item.price}
-                </strong>
-
-                <button
-                    onclick="removeItem(${index})"
-                >
-                    ✕
-                </button>
-
-            `;
-
-        }
+        `;
 
 
-        container.appendChild(div);
+        container.appendChild(element);
 
     });
 
 
-    document.getElementById("cartTotal").innerText =
-        "$" + total;
-
+    total.textContent =
+        "$" + totalPrice.toFixed(2);
 }
 
-
-/* REMOVE */
 
 function removeItem(index) {
 
@@ -443,75 +169,227 @@ function removeItem(index) {
 }
 
 
-/* BASIC TEXT SAFETY */
+function openCart() {
 
-function escapeHTML(text) {
+    updateCart();
 
-    return String(text)
-
-        .replaceAll("&", "&amp;")
-
-        .replaceAll("<", "&lt;")
-
-        .replaceAll(">", "&gt;")
-
-        .replaceAll('"', "&quot;")
-
-        .replaceAll("'", "&#039;");
+    document
+        .getElementById("cartModal")
+        .classList
+        .add("show");
 
 }
 
 
-/* CHECKOUT PLACEHOLDER */
+function closeCart(event) {
 
-function checkout() {
+    if (!event || event.target.id === "cartModal") {
+
+        document
+            .getElementById("cartModal")
+            .classList
+            .remove("show");
+
+    }
+
+}
+
+
+/* =========================
+   CUSTOM IMAGE
+========================= */
+
+function previewImage(event) {
+
+    const file =
+        event.target.files[0];
+
+    const preview =
+        document.getElementById("filePreview");
+
+    const fileName =
+        document.getElementById("fileName");
+
+
+    if (!file) return;
+
+
+    fileName.textContent =
+        file.name;
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload = function(e) {
+
+        preview.src = e.target.result;
+
+        preview.style.display = "block";
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =========================
+   CUSTOM REQUEST
+========================= */
+
+function addCustomToCart() {
+
+    const file =
+        document.getElementById("customFile").files[0];
+
+    const description =
+        document
+            .getElementById("customDescription")
+            .value
+            .trim();
+
+
+    if (!file && !description) {
+
+        alert(
+            "Please upload an image or describe what you want."
+        );
+
+        return;
+    }
+
+
+    cart.push({
+
+        name: "Custom Print Request",
+
+        price: 0,
+
+        custom: true,
+
+        fileName: file
+            ? file.name
+            : "No image",
+
+        description:
+            description || "Custom print"
+
+    });
+
+
+    updateCart();
+
+    document
+        .getElementById("customDescription")
+        .value = "";
+
+
+    document
+        .getElementById("customFile")
+        .value = "";
+
+
+    document
+        .getElementById("filePreview")
+        .style.display = "none";
+
+
+    document
+        .getElementById("fileName")
+        .textContent = "";
+
+
+    openCart();
+
+}
+
+
+/* =========================
+   ORDER REQUEST
+========================= */
+
+function requestOrder() {
 
     if (cart.length === 0) {
 
-        alert("Your cart is empty!");
+        alert("Your cart is empty.");
 
         return;
-
     }
 
 
-    alert(
-        "Your order is ready! Real payment and order submission will be connected next."
-    );
+    let message =
+        "C4Printz Order Request%0A%0A";
+
+
+    cart.forEach((item, index) => {
+
+        message +=
+            `${index + 1}. ${item.name}%0A`;
+
+        if (item.description) {
+
+            message +=
+                `Details: ${item.description}%0A`;
+
+        }
+
+        if (item.fileName) {
+
+            message +=
+                `Image: ${item.fileName}%0A`;
+
+        }
+
+        if (item.price > 0) {
+
+            message +=
+                `Price: $${item.price.toFixed(2)}%0A`;
+
+        }
+
+        message += "%0A";
+
+    });
+
+
+    message +=
+        "Please contact me about this order.";
+
+
+    /*
+       Change this to your preferred
+       contact method later.
+    */
+
+    window.location.href =
+        "mailto:?subject=C4Printz%20Order%20Request&body="
+        + message;
 
 }
 
 
-/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+/* =========================
+   SECURITY
+========================= */
 
-window.addEventListener(
-    "click",
-    function(event) {
+function escapeHTML(text) {
 
-        const productModal =
-            document.getElementById("productModal");
+    const div =
+        document.createElement("div");
 
-        const cartModal =
-            document.getElementById("cartModal");
+    div.textContent = text;
 
+    return div.innerHTML;
 
-        if (event.target === productModal) {
-
-            closeProduct();
-
-        }
+}
 
 
-        if (event.target === cartModal) {
-
-            closeCart();
-
-        }
-
-    }
-);
-
-
-/* START CART */
+/* =========================
+   START
+========================= */
 
 updateCart();
