@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>C4Printz</title>
+
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+<header class="header">
   <h1>C4Printz</h1>
-  <div class="cart" onclick="openCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
+  <div class="cart" onclick="toggleCart()">🛒 <span id="cart-count">0</span></div>
 </header>
 
-<nav>
+<nav class="nav">
   <a href="#shop">Shop</a>
   <a href="#custom">Custom</a>
   <a href="#social">Socials</a>
@@ -21,26 +23,38 @@
 
 <!-- SHOP -->
 <section id="shop">
-  <h2>Products</h2>
+  <h2>🔥 Popular Prints</h2>
 
   <div class="product-row">
 
     <div class="product">
       <h3>Mini Dragon</h3>
-      <button onclick="viewProduct(['https://via.placeholder.com/300','https://via.placeholder.com/301'])">View Product</button>
+      <button onclick="viewProduct(['https://via.placeholder.com/400','https://via.placeholder.com/401'])">View Product</button>
       <button onclick="addToCart('Mini Dragon')">Add to Cart</button>
     </div>
 
     <div class="product">
       <h3>Phone Stand</h3>
-      <button onclick="viewProduct(['https://via.placeholder.com/302'])">View Product</button>
+      <button onclick="viewProduct(['https://via.placeholder.com/402'])">View Product</button>
       <button onclick="addToCart('Phone Stand')">Add to Cart</button>
     </div>
 
     <div class="product">
-      <h3>Custom Costume Prop</h3>
-      <button onclick="viewProduct(['https://via.placeholder.com/303'])">View Product</button>
+      <h3>Costume Prop</h3>
+      <button onclick="viewProduct(['https://via.placeholder.com/403'])">View Product</button>
       <button onclick="addToCart('Costume Prop')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <h3>Controller Holder</h3>
+      <button onclick="viewProduct(['https://via.placeholder.com/404'])">View Product</button>
+      <button onclick="addToCart('Controller Holder')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <h3>Desk Organizer</h3>
+      <button onclick="viewProduct(['https://via.placeholder.com/405'])">View Product</button>
+      <button onclick="addToCart('Desk Organizer')">Add to Cart</button>
     </div>
 
   </div>
@@ -48,30 +62,30 @@
 
 <!-- CUSTOM -->
 <section id="custom">
-  <h2>Create Your Own</h2>
+  <h2>🎨 Create Your Own</h2>
 
   <input type="file" id="upload" accept="image/*">
-
   <button onclick="addCustom()">Add Custom to Cart</button>
 </section>
 
 <!-- SOCIAL -->
 <section id="social">
-  <h2>Follow Us</h2>
+  <h2>📲 Follow Us</h2>
 
-  <a href="https://www.tiktok.com/@c4printz" target="_blank">TikTok</a>
-  <a href="https://www.youtube.com/@C4printz" target="_blank">YouTube</a>
-
+  <div class="social-links">
+    <a href="https://www.tiktok.com/@c4printz" target="_blank">TikTok</a>
+    <a href="https://www.youtube.com/@C4printz" target="_blank">YouTube</a>
+  </div>
 </section>
 
-<!-- CART POPUP -->
+<!-- CART -->
 <div id="cart-box" class="cart-box">
   <h2>Your Cart</h2>
   <ul id="cart-items"></ul>
   <button onclick="checkout()">Checkout</button>
 </div>
 
-<!-- PRODUCT VIEW -->
+<!-- IMAGE VIEWER -->
 <div id="viewer" class="viewer"></div>
 
 <footer>
