@@ -1438,3 +1438,24 @@ footer small {
         padding: 30px 20px;
     }
 }
+#filePreview {
+    display: none;
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.upload-button {
+    display: inline-block;
+    padding: 12px 18px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    border-color: #00e5ff;
+}
