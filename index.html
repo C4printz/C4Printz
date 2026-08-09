@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>C4Printz | Custom 3D Prints</title>
+<title>C4Printz | Custom 3D Prints</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- TOP BAR -->
+
 <header>
+
+    <!-- CART ON LEFT -->
+
+    <button class="cart-icon" onclick="openCart()">
+        🛒
+        <span id="cartCount">0</span>
+    </button>
+
+
     <div class="logo">
         C4<span>Printz</span>
     </div>
+
 
     <nav>
         <a href="#home">Home</a>
@@ -23,9 +35,6 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <button class="cart-button" onclick="openCart()">
-        🛒 Cart <span id="cartCount">0</span>
-    </button>
 </header>
 
 
@@ -36,7 +45,7 @@
     <div class="hero-content">
 
         <div class="badge">
-            ✦ CUSTOM 3D PRINTS
+            ✦ C4PRINTZ
         </div>
 
         <h1>
@@ -45,24 +54,26 @@
         </h1>
 
         <p>
-            Custom 3D prints, cool designs, and personalized creations
-            made just for you.
+            Custom 3D prints and unique designs made just for you.
         </p>
 
         <div class="hero-buttons">
-            <a href="#shop" class="primary-button">
+
+            <a href="#shop" class="primary">
                 Shop Prints →
             </a>
 
-            <a href="#custom" class="secondary-button">
+            <a href="#custom" class="secondary">
                 Custom Print
             </a>
+
         </div>
 
     </div>
 
-    <div class="hero-art">
-        <div class="floating-print">🐉</div>
+
+    <div class="hero-object">
+        🐉
     </div>
 
 </section>
@@ -72,189 +83,128 @@
 
 <section class="shop" id="shop">
 
-    <div class="section-heading">
-        <div>
-            <p>OUR COLLECTION</p>
-            <h2>Shop Prints</h2>
-        </div>
+    <div class="heading">
 
-        <span>New designs coming soon.</span>
+        <p>OUR PRODUCTS</p>
+
+        <h2>Shop Prints</h2>
+
+        <span>
+            Click a product to see more.
+        </span>
+
     </div>
 
 
     <div class="products">
 
 
-        <!-- DRAGON -->
+        <!-- MINI DRAGON -->
 
-        <div class="product">
+        <article
+            class="product-card"
+            onclick="openProduct('dragon')"
+        >
 
-            <div class="product-picture dragon">
+            <div class="product-image dragon">
                 🐉
             </div>
 
-            <div class="product-content">
+            <div class="product-info">
 
-                <span class="product-tag">POPULAR</span>
+                <span>POPULAR</span>
 
                 <h3>Mini Dragon</h3>
 
                 <p>
-                    A fun articulated dragon that looks awesome
-                    on your desk, shelf, or anywhere else.
+                    Articulated mini dragon.
                 </p>
 
-                <label>Size</label>
+                <strong>
+                    From $5
+                </strong>
 
-                <select id="dragonSize"
-                    onchange="changeProductPrice('dragonSize','dragonPrice')">
-
-                    <option value="5">Small — $5</option>
-                    <option value="10">Medium — $10</option>
-                    <option value="15">Large — $15</option>
-
-                </select>
-
-                <label>Color</label>
-
-                <select id="dragonColor">
-                    <option>Black</option>
-                    <option>White</option>
-                    <option>Blue</option>
-                    <option>Red</option>
-                    <option>Green</option>
-                    <option>Yellow</option>
-                    <option>Purple</option>
-                </select>
-
-                <div class="product-bottom">
-
-                    <strong id="dragonPrice">$5</strong>
-
-                    <button onclick="addProduct('Mini Dragon','dragonSize','dragonColor')">
-                        Add to Cart
-                    </button>
-
-                </div>
+                <button
+                    onclick="event.stopPropagation(); openProduct('dragon')"
+                >
+                    View Product →
+                </button>
 
             </div>
 
-        </div>
+        </article>
 
 
         <!-- PHONE STAND -->
 
-        <div class="product">
+        <article
+            class="product-card"
+            onclick="openProduct('phone')"
+        >
 
-            <div class="product-picture phone">
+            <div class="product-image phone">
                 📱
             </div>
 
-            <div class="product-content">
+            <div class="product-info">
 
-                <span class="product-tag">USEFUL</span>
+                <span>USEFUL</span>
 
                 <h3>Phone Stand</h3>
 
                 <p>
-                    A simple and sturdy 3D printed phone stand
-                    for your desk.
+                    A clean desk phone stand.
                 </p>
 
-                <label>Size</label>
+                <strong>
+                    From $5
+                </strong>
 
-                <select id="phoneSize"
-                    onchange="changeProductPrice('phoneSize','phonePrice')">
-
-                    <option value="5">Small — $5</option>
-                    <option value="10">Medium — $10</option>
-                    <option value="15">Large — $15</option>
-
-                </select>
-
-                <label>Color</label>
-
-                <select id="phoneColor">
-                    <option>Black</option>
-                    <option>White</option>
-                    <option>Blue</option>
-                    <option>Red</option>
-                    <option>Green</option>
-                    <option>Yellow</option>
-                    <option>Purple</option>
-                </select>
-
-                <div class="product-bottom">
-
-                    <strong id="phonePrice">$5</strong>
-
-                    <button onclick="addProduct('Phone Stand','phoneSize','phoneColor')">
-                        Add to Cart
-                    </button>
-
-                </div>
+                <button
+                    onclick="event.stopPropagation(); openProduct('phone')"
+                >
+                    View Product →
+                </button>
 
             </div>
 
-        </div>
+        </article>
 
 
         <!-- COSTUME -->
 
-        <div class="product">
+        <article
+            class="product-card"
+            onclick="openProduct('costume')"
+        >
 
-            <div class="product-picture costume">
+            <div class="product-image costume">
                 👕
             </div>
 
-            <div class="product-content">
+            <div class="product-info">
 
-                <span class="product-tag">CUSTOM</span>
+                <span>CUSTOM</span>
 
                 <h3>3D Printed Costume</h3>
 
                 <p>
-                    Custom printed costume pieces and accessories.
-                    Contact us for a custom quote.
+                    Custom costume pieces.
                 </p>
 
-                <label>Size</label>
+                <strong>
+                    From $5
+                </strong>
 
-                <select id="costumeSize"
-                    onchange="changeProductPrice('costumeSize','costumePrice')">
-
-                    <option value="5">Small — $5</option>
-                    <option value="10">Medium — $10</option>
-                    <option value="15">Large — $15</option>
-
-                </select>
-
-                <label>Color</label>
-
-                <select id="costumeColor">
-                    <option>Black</option>
-                    <option>White</option>
-                    <option>Blue</option>
-                    <option>Red</option>
-                    <option>Green</option>
-                    <option>Yellow</option>
-                    <option>Purple</option>
-                </select>
-
-                <div class="product-bottom">
-
-                    <strong id="costumePrice">$5</strong>
-
-                    <button onclick="addProduct('3D Printed Costume','costumeSize','costumeColor')">
-                        Add to Cart
-                    </button>
-
-                </div>
+                <button
+                    onclick="event.stopPropagation(); openProduct('costume')"
+                >
+                    View Product →
+                </button>
 
             </div>
 
-        </div>
-
+        </article>
 
     </div>
 
@@ -265,113 +215,71 @@
 
 <section class="custom" id="custom">
 
-    <div class="custom-container">
+    <div class="custom-info">
 
-        <div class="custom-info">
+        <p>CUSTOM PRINTING</p>
 
-            <div class="badge">
-                ✦ HAVE YOUR OWN DESIGN?
-            </div>
+        <h2>
+            Have your own<br>
+            <span>design?</span>
+        </h2>
 
-            <h2>
-                Turn your file<br>
-                into a <span>real print.</span>
-            </h2>
-
-            <p>
-                Upload an image or 3D model and tell us what
-                you want printed.
-            </p>
-
-            <div class="check-list">
-                ✓ STL files<br>
-                ✓ OBJ files<br>
-                ✓ PNG / JPG images<br>
-                ✓ Custom requests
-            </div>
-
-        </div>
-
-
-        <div class="upload-card">
-
-            <div class="upload-icon">
-                📤
-            </div>
-
-            <h3>Upload Your Design</h3>
-
-            <p>
-                Choose your file from your computer.
-            </p>
-
-            <input
-                type="file"
-                id="customFile"
-                accept="image/*,.stl,.obj"
-                onchange="previewFile()"
-            >
-
-            <label for="customFile" class="file-button">
-                Choose File
-            </label>
-
-            <div id="fileName">
-                No file selected
-            </div>
-
-            <img id="preview">
-
-            <label>Size</label>
-
-            <select id="customSize"
-                onchange="changeProductPrice('customSize','customPrice')">
-
-                <option value="5">Small — $5</option>
-                <option value="10">Medium — $10</option>
-                <option value="15">Large — $15</option>
-
-            </select>
-
-            <label>What do you want?</label>
-
-            <textarea
-                id="customNotes"
-                placeholder="Tell us about your print..."
-            ></textarea>
-
-            <div class="custom-price" id="customPrice">
-                $5
-            </div>
-
-            <button class="submit-button" onclick="submitCustom()">
-                Submit Custom Request →
-            </button>
-
-        </div>
+        <p>
+            Upload your file and tell us what you want printed.
+        </p>
 
     </div>
 
-</section>
 
+    <div class="upload-card">
 
-<!-- SOCIAL -->
+        <h3>📤 Upload Your Design</h3>
 
-<section class="social">
+        <p>
+            STL, OBJ, PNG or JPG
+        </p>
 
-    <p>FOLLOW C4PRINTZ</p>
+        <input
+            type="file"
+            id="customFile"
+            accept="image/*,.stl,.obj"
+            onchange="previewFile()"
+        >
 
-    <h2>See what we're printing.</h2>
+        <label for="customFile">
+            Choose File
+        </label>
 
-    <div class="social-buttons">
+        <div id="fileName">
+            No file selected
+        </div>
 
-        <a href="#" class="social-button">
-            🎵 TikTok
-        </a>
+        <img id="preview">
 
-        <a href="#" class="social-button">
-            ▶ YouTube
-        </a>
+        <select id="customSize">
+
+            <option value="5">
+                Small — $5
+            </option>
+
+            <option value="10">
+                Medium — $10
+            </option>
+
+            <option value="15">
+                Large — $15
+            </option>
+
+        </select>
+
+        <textarea
+            id="customNotes"
+            placeholder="Tell us what you want..."
+        ></textarea>
+
+        <button onclick="submitCustom()">
+            Request Custom Print →
+        </button>
 
     </div>
 
@@ -384,11 +292,7 @@
 
     <p>CONTACT</p>
 
-    <h2>Have a question?</h2>
-
-    <p>
-        Email us and we'll get back to you.
-    </p>
+    <h2>Questions?</h2>
 
     <a href="mailto:c4rocks@icloud.com">
         c4rocks@icloud.com
@@ -397,22 +301,137 @@
 </section>
 
 
-<!-- CART -->
+<!-- PRODUCT POPUP -->
 
-<div id="cartOverlay" class="cart-overlay">
+<div id="productModal" class="modal">
 
-    <div class="cart">
+    <div class="product-modal">
 
-        <button class="close-cart" onclick="closeCart()">
+        <button
+            class="close"
+            onclick="closeProduct()"
+        >
             ✕
         </button>
 
-        <h2>Your Cart</h2>
 
-        <div id="cartItems"></div>
+        <div
+            id="modalImage"
+            class="modal-image"
+        >
+            🐉
+        </div>
+
+
+        <div class="modal-info">
+
+            <span id="modalTag">
+                POPULAR
+            </span>
+
+            <h2 id="modalTitle">
+                Mini Dragon
+            </h2>
+
+            <p id="modalDescription">
+                Articulated mini dragon.
+            </p>
+
+
+            <label>
+                Size
+            </label>
+
+            <select
+                id="modalSize"
+                onchange="updateModalPrice()"
+            >
+
+                <option value="5">
+                    Small — $5
+                </option>
+
+                <option value="10">
+                    Medium — $10
+                </option>
+
+                <option value="15">
+                    Large — $15
+                </option>
+
+            </select>
+
+
+            <label>
+                Color
+            </label>
+
+            <select id="modalColor">
+
+                <option>Black</option>
+                <option>White</option>
+                <option>Blue</option>
+                <option>Red</option>
+                <option>Green</option>
+                <option>Yellow</option>
+                <option>Purple</option>
+
+            </select>
+
+
+            <div
+                class="modal-price"
+                id="modalPrice"
+            >
+                $5
+            </div>
+
+
+            <button
+                class="add-button"
+                onclick="addModalProduct()"
+            >
+                Add to Cart 🛒
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- CART -->
+
+<div id="cartModal" class="modal">
+
+    <div class="cart">
+
+        <button
+            class="close"
+            onclick="closeCart()"
+        >
+            ✕
+        </button>
+
+        <h2>
+            Your Cart 🛒
+        </h2>
+
+        <div id="cartItems">
+            Your cart is empty.
+        </div>
 
         <div class="cart-total">
-            Total: <strong id="cartTotal">$0</strong>
+
+            <span>
+                Total
+            </span>
+
+            <strong id="cartTotal">
+                $0
+            </strong>
+
         </div>
 
         <button onclick="checkout()">
@@ -445,42 +464,158 @@
 
 let cart = [];
 
+let currentProduct = "";
 
-function changeProductPrice(selectId, priceId) {
 
-    const select = document.getElementById(selectId);
+const products = {
 
-    document.getElementById(priceId).innerText =
-        "$" + select.value;
+    dragon: {
+
+        title: "Mini Dragon",
+
+        tag: "POPULAR",
+
+        description:
+        "A fun articulated mini dragon that looks awesome on a desk or shelf.",
+
+        emoji: "🐉"
+
+    },
+
+    phone: {
+
+        title: "Phone Stand",
+
+        tag: "USEFUL",
+
+        description:
+        "A clean and sturdy 3D printed phone stand for your desk.",
+
+        emoji: "📱"
+
+    },
+
+    costume: {
+
+        title: "3D Printed Costume",
+
+        tag: "CUSTOM",
+
+        description:
+        "Custom printed costume pieces and accessories.",
+
+        emoji: "👕"
+
+    }
+
+};
+
+
+function openProduct(product) {
+
+    currentProduct = product;
+
+    const data = products[product];
+
+
+    document.getElementById("modalTitle")
+        .innerText = data.title;
+
+
+    document.getElementById("modalTag")
+        .innerText = data.tag;
+
+
+    document.getElementById("modalDescription")
+        .innerText = data.description;
+
+
+    document.getElementById("modalImage")
+        .innerText = data.emoji;
+
+
+    document.getElementById("modalSize")
+        .value = "5";
+
+
+    document.getElementById("modalPrice")
+        .innerText = "$5";
+
+
+    document.getElementById("productModal")
+        .classList.add("show");
 
 }
 
 
-function addProduct(name, sizeId, colorId) {
+function closeProduct() {
+
+    document.getElementById("productModal")
+        .classList.remove("show");
+
+}
+
+
+function updateModalPrice() {
+
+    const price =
+        document.getElementById("modalSize")
+        .value;
+
+    document.getElementById("modalPrice")
+        .innerText = "$" + price;
+
+}
+
+
+function addModalProduct() {
 
     const size =
-        document.getElementById(sizeId);
+        document.getElementById("modalSize");
+
 
     const color =
-        document.getElementById(colorId);
+        document.getElementById("modalColor");
+
 
     cart.push({
 
-        name: name,
+        name:
+            products[currentProduct].title,
 
         size:
             size.options[size.selectedIndex].text,
 
-        color: color.value,
+        color:
+            color.value,
 
         price:
             Number(size.value)
 
     });
 
+
     updateCart();
 
-    alert(name + " added to your cart!");
+    closeProduct();
+
+    openCart();
+
+}
+
+
+function openCart() {
+
+    document.getElementById("cartModal")
+        .classList.add("show");
+
+}
+
+
+function closeCart() {
+
+    document.getElementById("cartModal")
+        .classList.remove("show");
 
 }
 
@@ -490,77 +625,87 @@ function updateCart() {
     const container =
         document.getElementById("cartItems");
 
-    const count =
-        document.getElementById("cartCount");
 
-    const total =
-        document.getElementById("cartTotal");
+    document.getElementById("cartCount")
+        .innerText = cart.length;
 
-    count.innerText = cart.length;
+
+    if (cart.length === 0) {
+
+        container.innerHTML =
+            "Your cart is empty.";
+
+        document.getElementById("cartTotal")
+            .innerText = "$0";
+
+        return;
+
+    }
+
 
     container.innerHTML = "";
 
-    let sum = 0;
+    let total = 0;
 
 
     cart.forEach((item, index) => {
 
-        sum += item.price;
+        total += item.price;
+
 
         const div =
             document.createElement("div");
 
-        div.className = "cart-item";
+
+        div.className =
+            "cart-item";
+
 
         div.innerHTML = `
+
             <div>
-                <strong>${item.name}</strong>
+
+                <strong>
+                    ${item.name}
+                </strong>
+
                 <br>
+
                 <small>
                     ${item.size} • ${item.color}
                 </small>
+
             </div>
 
-            <div>
+            <strong>
                 $${item.price}
-                <button onclick="removeItem(${index})">
-                    ✕
-                </button>
-            </div>
+            </strong>
+
+            <button
+                onclick="removeItem(${index})"
+            >
+                ✕
+            </button>
+
         `;
+
 
         container.appendChild(div);
 
     });
 
-    total.innerText = "$" + sum;
+
+    document.getElementById("cartTotal")
+        .innerText = "$" + total;
 
 }
 
 
 function removeItem(index) {
 
-    cart.splice(index,1);
+    cart.splice(index, 1);
 
     updateCart();
-
-}
-
-
-function openCart() {
-
-    document
-        .getElementById("cartOverlay")
-        .classList.add("open");
-
-}
-
-
-function closeCart() {
-
-    document
-        .getElementById("cartOverlay")
-        .classList.remove("open");
 
 }
 
@@ -568,30 +713,39 @@ function closeCart() {
 function previewFile() {
 
     const file =
-        document.getElementById("customFile").files[0];
+        document.getElementById("customFile")
+        .files[0];
+
 
     if (!file) return;
 
-    document.getElementById("fileName").innerText =
-        file.name;
+
+    document.getElementById("fileName")
+        .innerText = file.name;
+
 
     if (file.type.startsWith("image/")) {
 
         const reader =
             new FileReader();
 
-        reader.onload = function(event) {
 
-            const image =
-                document.getElementById("preview");
+        reader.onload =
+            function(event) {
 
-            image.src =
-                event.target.result;
+                const image =
+                    document.getElementById("preview");
 
-            image.style.display =
-                "block";
 
-        };
+                image.src =
+                    event.target.result;
+
+
+                image.style.display =
+                    "block";
+
+            };
+
 
         reader.readAsDataURL(file);
 
@@ -603,28 +757,50 @@ function previewFile() {
 function submitCustom() {
 
     const file =
-        document.getElementById("customFile").files[0];
+        document.getElementById("customFile")
+        .files[0];
+
 
     const notes =
-        document.getElementById("customNotes").value;
+        document.getElementById("customNotes")
+        .value;
+
 
     if (!file) {
 
-        alert("Please upload your design first!");
+        alert(
+            "Please choose a file first!"
+        );
 
         return;
 
     }
 
+
     const email =
         "mailto:c4rocks@icloud.com" +
-        "?subject=Custom C4Printz Order" +
-        "&body=" +
+
+        "?subject=" +
+
         encodeURIComponent(
+            "C4Printz Custom Print"
+        ) +
+
+        "&body=" +
+
+        encodeURIComponent(
+
             "Custom Print Request\n\n" +
-            "File: " + file.name +
-            "\n\nDetails:\n" + notes
+
+            "File: " +
+            file.name +
+
+            "\n\nDetails:\n" +
+
+            notes
+
         );
+
 
     window.location.href = email;
 
@@ -635,15 +811,17 @@ function checkout() {
 
     if (cart.length === 0) {
 
-        alert("Your cart is empty!");
+        alert(
+            "Your cart is empty!"
+        );
 
         return;
 
     }
 
+
     alert(
-        "Your cart is ready! " +
-        "We'll add real online checkout next."
+        "Checkout is coming soon!"
     );
 
 }
