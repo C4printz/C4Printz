@@ -2,32 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>C4Printz | 3D Prints</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description"
-          content="C4Printz - custom 3D prints, cool creations, and custom designs.">
+    <meta
+        name="description"
+        content="C4Printz — custom 3D prints and unique designs."
+    >
+
+    <title>C4Printz | Custom 3D Prints</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="navbar">
 
     <a href="#home" class="logo">
-        C4<span>Printz</span>
+        C4<span>PRINTZ</span>
     </a>
 
     <nav>
-        <a href="#home">Home</a>
         <a href="#shop">Shop</a>
         <a href="#custom">Custom</a>
+        <a href="#socials">Socials</a>
         <a href="#contact">Contact</a>
     </nav>
 
-    <button class="cart-button" onclick="openCart()">
+    <button
+        class="cart-button"
+        onclick="openCart()"
+        aria-label="Open cart"
+    >
         🛒
         <span id="cartCount">0</span>
     </button>
@@ -35,93 +49,149 @@
 </header>
 
 
-<main>
+<!-- =========================
+     HERO
+========================= -->
 
-<!-- HERO -->
-
-<section class="hero" id="home">
+<section id="home" class="hero">
 
     <div class="hero-content">
 
-        <div class="badge">
-            ✦ C4PRINTZ
+        <div class="hero-label">
+            C4PRINTZ • 3D PRINTED
         </div>
 
         <h1>
-            YOUR IDEAS.<br>
-            <span>PRINTED.</span>
+            PRINTED<br>
+            <span>DIFFERENT.</span>
         </h1>
 
         <p>
-            Cool 3D prints, custom creations, and unique designs
-            made just for you.
+            Unique 3D prints, custom designs, and cool stuff
+            made to order.
         </p>
 
         <div class="hero-buttons">
 
-            <a href="#shop" class="primary-button">
-                Shop Prints →
+            <a href="#shop" class="button primary">
+                Shop Prints
             </a>
 
-            <a href="#custom" class="secondary-button">
-                Custom Print
+            <a href="#custom" class="button secondary">
+                Create Your Own
             </a>
+
+        </div>
+
+        <div class="hero-stats">
+
+            <div>
+                <strong>10+</strong>
+                <span>Designs</span>
+            </div>
+
+            <div>
+                <strong>100%</strong>
+                <span>Made to Order</span>
+            </div>
+
+            <div>
+                <strong>∞</strong>
+                <span>Custom Ideas</span>
+            </div>
 
         </div>
 
     </div>
 
-    <div class="hero-art">
-        <div class="floating-print">🐉</div>
+    <div class="hero-visual">
+
+        <div class="glow"></div>
+
+        <div class="hero-object">
+            🖨️
+        </div>
+
+        <div class="floating-card card-one">
+            NEW
+        </div>
+
+        <div class="floating-card card-two">
+            CUSTOM
+        </div>
+
     </div>
 
 </section>
 
 
-<!-- SHOP -->
+<!-- =========================
+     SHOP
+========================= -->
 
-<section class="shop" id="shop">
+<section id="shop" class="shop section">
 
-    <div class="section-heading">
+    <div class="section-header">
 
-        <p>OUR COLLECTION</p>
+        <div>
+            <span class="eyebrow">THE COLLECTION</span>
 
-        <h2>Shop Prints</h2>
+            <h2>
+                SHOP <span>PRINTS.</span>
+            </h2>
+        </div>
 
-        <span>
-            Find something cool or make your own.
-        </span>
+        <p>
+            Pick something you like or make your own.
+        </p>
 
     </div>
 
 
     <div class="products">
 
-
-        <!-- DRAGON -->
+        <!-- PRODUCT 1 -->
 
         <article class="product-card">
 
             <div class="product-image">
-                <div class="placeholder">🐉</div>
-                <span class="product-badge">POPULAR</span>
+
+                <span class="product-tag">
+                    POPULAR
+                </span>
+
+                <div class="product-placeholder">
+                    🐉
+                </div>
+
             </div>
 
-            <div class="product-content">
+            <div class="product-info">
 
-                <h3>Mini Dragon</h3>
+                <div>
 
-                <p>
-                    A fun articulated dragon that's perfect
-                    for your desk or shelf.
-                </p>
+                    <h3>Flexi Dragon</h3>
+
+                    <p>
+                        A flexible articulated dragon
+                        that's fun to play with and display.
+                    </p>
+
+                </div>
 
                 <div class="product-bottom">
 
-                    <strong>From $5</strong>
+                    <strong>$12.00</strong>
 
-                    <button onclick="openProduct('dragon')">
-                        View Product
+                    <button
+                        onclick="viewProduct(
+                            'Flexi Dragon',
+                            12,
+                            '🐉',
+                            'A flexible articulated dragon.'
+                        )"
+                    >
+                        View Product →
                     </button>
 
                 </div>
@@ -131,29 +201,48 @@
         </article>
 
 
-        <!-- PHONE STAND -->
+        <!-- PRODUCT 2 -->
 
         <article class="product-card">
 
             <div class="product-image">
-                <div class="placeholder">📱</div>
-                <span class="product-badge">USEFUL</span>
+
+                <span class="product-tag">
+                    NEW
+                </span>
+
+                <div class="product-placeholder">
+                    🦖
+                </div>
+
             </div>
 
-            <div class="product-content">
+            <div class="product-info">
 
-                <h3>Phone Stand</h3>
+                <div>
 
-                <p>
-                    A clean and sturdy stand for your phone.
-                </p>
+                    <h3>Dinosaur</h3>
+
+                    <p>
+                        A cool articulated dinosaur
+                        for your desk or shelf.
+                    </p>
+
+                </div>
 
                 <div class="product-bottom">
 
-                    <strong>From $5</strong>
+                    <strong>$10.00</strong>
 
-                    <button onclick="openProduct('phone')">
-                        View Product
+                    <button
+                        onclick="viewProduct(
+                            'Dinosaur',
+                            10,
+                            '🦖',
+                            'A cool articulated dinosaur.'
+                        )"
+                    >
+                        View Product →
                     </button>
 
                 </div>
@@ -163,29 +252,44 @@
         </article>
 
 
-        <!-- COSTUME -->
+        <!-- PRODUCT 3 -->
 
         <article class="product-card">
 
             <div class="product-image">
-                <div class="placeholder">👕</div>
-                <span class="product-badge">CUSTOM</span>
+
+                <div class="product-placeholder">
+                    🐙
+                </div>
+
             </div>
 
-            <div class="product-content">
+            <div class="product-info">
 
-                <h3>Costume Pieces</h3>
+                <div>
 
-                <p>
-                    3D printed costume parts and accessories.
-                </p>
+                    <h3>Flexi Octopus</h3>
+
+                    <p>
+                        A fun articulated octopus
+                        with lots of movement.
+                    </p>
+
+                </div>
 
                 <div class="product-bottom">
 
-                    <strong>From $5</strong>
+                    <strong>$9.00</strong>
 
-                    <button onclick="openProduct('costume')">
-                        View Product
+                    <button
+                        onclick="viewProduct(
+                            'Flexi Octopus',
+                            9,
+                            '🐙',
+                            'A fun articulated octopus.'
+                        )"
+                    >
+                        View Product →
                     </button>
 
                 </div>
@@ -195,29 +299,48 @@
         </article>
 
 
-        <!-- OCTOPUS -->
+        <!-- PRODUCT 4 -->
 
         <article class="product-card">
 
             <div class="product-image">
-                <div class="placeholder">🐙</div>
-                <span class="product-badge">FLEXI</span>
+
+                <span class="product-tag">
+                    COOL
+                </span>
+
+                <div class="product-placeholder">
+                    🦈
+                </div>
+
             </div>
 
-            <div class="product-content">
+            <div class="product-info">
 
-                <h3>Flexi Octopus</h3>
+                <div>
 
-                <p>
-                    A flexible articulated octopus.
-                </p>
+                    <h3>Flexi Shark</h3>
+
+                    <p>
+                        A flexible shark that makes
+                        a great desk decoration.
+                    </p>
+
+                </div>
 
                 <div class="product-bottom">
 
-                    <strong>From $5</strong>
+                    <strong>$11.00</strong>
 
-                    <button onclick="openProduct('octopus')">
-                        View Product
+                    <button
+                        onclick="viewProduct(
+                            'Flexi Shark',
+                            11,
+                            '🦈',
+                            'A flexible articulated shark.'
+                        )"
+                    >
+                        View Product →
                     </button>
 
                 </div>
@@ -227,189 +350,44 @@
         </article>
 
 
-        <!-- DINOSAUR -->
+        <!-- PRODUCT 5 -->
 
         <article class="product-card">
 
             <div class="product-image">
-                <div class="placeholder">🦖</div>
-                <span class="product-badge">NEW</span>
-            </div>
 
-            <div class="product-content">
-
-                <h3>Articulated Dinosaur</h3>
-
-                <p>
-                    A fun articulated dinosaur for collectors.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong>From $5</strong>
-
-                    <button onclick="openProduct('dinosaur')">
-                        View Product
-                    </button>
-
+                <div class="product-placeholder">
+                    🐢
                 </div>
 
             </div>
 
-        </article>
+            <div class="product-info">
 
+                <div>
 
-        <!-- FROG -->
+                    <h3>Flexi Turtle</h3>
 
-        <article class="product-card">
-
-            <div class="product-image">
-                <div class="placeholder">🐸</div>
-                <span class="product-badge">FLEXI</span>
-            </div>
-
-            <div class="product-content">
-
-                <h3>Flexi Frog</h3>
-
-                <p>
-                    A small articulated frog that's fun to play with.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong>From $5</strong>
-
-                    <button onclick="openProduct('frog')">
-                        View Product
-                    </button>
+                    <p>
+                        A small articulated turtle
+                        that's easy to take anywhere.
+                    </p>
 
                 </div>
 
-            </div>
-
-        </article>
-
-
-        <!-- CONTROLLER STAND -->
-
-        <article class="product-card">
-
-            <div class="product-image">
-                <div class="placeholder">🎮</div>
-                <span class="product-badge">GAMING</span>
-            </div>
-
-            <div class="product-content">
-
-                <h3>Controller Stand</h3>
-
-                <p>
-                    Keep your gaming controller organized.
-                </p>
-
                 <div class="product-bottom">
 
-                    <strong>From $5</strong>
+                    <strong>$8.00</strong>
 
-                    <button onclick="openProduct('controller')">
-                        View Product
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- PLANTER -->
-
-        <article class="product-card">
-
-            <div class="product-image">
-                <div class="placeholder">🪴</div>
-                <span class="product-badge">HOME</span>
-            </div>
-
-            <div class="product-content">
-
-                <h3>Mini Planter</h3>
-
-                <p>
-                    A small decorative planter for your desk.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong>From $5</strong>
-
-                    <button onclick="openProduct('planter')">
-                        View Product
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- FIDGET -->
-
-        <article class="product-card">
-
-            <div class="product-image">
-                <div class="placeholder">🧩</div>
-                <span class="product-badge">FUN</span>
-            </div>
-
-            <div class="product-content">
-
-                <h3>Fidget Toy</h3>
-
-                <p>
-                    A satisfying little 3D printed fidget.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong>From $5</strong>
-
-                    <button onclick="openProduct('fidget')">
-                        View Product
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- KEYCHAIN -->
-
-        <article class="product-card">
-
-            <div class="product-image">
-                <div class="placeholder">🔑</div>
-                <span class="product-badge">SMALL</span>
-            </div>
-
-            <div class="product-content">
-
-                <h3>Custom Keychain</h3>
-
-                <p>
-                    Small personalized 3D printed keychains.
-                </p>
-
-                <div class="product-bottom">
-
-                    <strong>From $5</strong>
-
-                    <button onclick="openProduct('keychain')">
-                        View Product
+                    <button
+                        onclick="viewProduct(
+                            'Flexi Turtle',
+                            8,
+                            '🐢',
+                            'A small articulated turtle.'
+                        )"
+                    >
+                        View Product →
                     </button>
 
                 </div>
@@ -420,26 +398,54 @@
 
     </div>
 
+    <div class="slider-hint">
+        ← DRAG OR SWIPE TO EXPLORE →
+    </div>
+
 </section>
 
 
-<!-- CUSTOM -->
+<!-- =========================
+     CUSTOM
+========================= -->
 
-<section class="custom-section" id="custom">
+<section id="custom" class="custom section">
 
-    <div class="custom-text">
+    <div class="custom-copy">
 
-        <p>CUSTOM PRINTING</p>
+        <span class="eyebrow">
+            GOT AN IDEA?
+        </span>
 
         <h2>
-            Have your own
-            <span>design?</span>
+            MAKE IT<br>
+            <span>YOUR OWN.</span>
         </h2>
 
         <p>
-            Upload your file, choose a size, add some notes,
-            and put your custom print directly into your cart.
+            Have a picture, idea, logo, character, or
+            something completely random you want printed?
+            Send it to us and we'll take a look.
         </p>
+
+        <div class="custom-features">
+
+            <div>
+                <strong>01</strong>
+                <span>Send your idea</span>
+            </div>
+
+            <div>
+                <strong>02</strong>
+                <span>We review it</span>
+            </div>
+
+            <div>
+                <strong>03</strong>
+                <span>Get your print</span>
+            </div>
+
+        </div>
 
     </div>
 
@@ -447,67 +453,58 @@
     <div class="custom-box">
 
         <div class="upload-icon">
-            📤
+            ↑
         </div>
 
-        <h3>Custom 3D Print</h3>
+        <h3>
+            Create a Custom Print
+        </h3>
 
         <p>
-            STL, OBJ, PNG, JPG and other supported files.
+            Upload an image or tell us what you want.
         </p>
 
 
-        <input
-            type="file"
-            id="customFile"
-            accept="image/*,.stl,.obj"
-            onchange="showFile()"
-        >
-
-        <label for="customFile" class="upload-button">
-            Choose File
+        <label>
+            YOUR IMAGE
         </label>
 
+        <label class="upload-button">
 
-        <div id="fileName">
-            No file selected
-        </div>
+            Choose Image
 
-        <img id="filePreview">
+            <input
+                type="file"
+                id="customFile"
+                accept="image/*"
+                onchange="previewImage(event)"
+            >
 
+        </label>
 
-        <label>Size</label>
+        <img
+            id="filePreview"
+            alt="Preview"
+        >
 
-        <select id="customSize">
-
-            <option value="5">
-                Small — $5
-            </option>
-
-            <option value="10">
-                Medium — $10
-            </option>
-
-            <option value="15">
-                Large — $15
-            </option>
-
-        </select>
+        <div id="fileName"></div>
 
 
-        <label>Notes</label>
+        <label>
+            WHAT DO YOU WANT?
+        </label>
 
         <textarea
-            id="customNotes"
+            id="customDescription"
             placeholder="Tell us what you want printed..."
         ></textarea>
 
 
         <button
-            class="custom-cart-button"
+            class="custom-button"
             onclick="addCustomToCart()"
         >
-            Add Custom Print to Cart 🛒
+            Add Custom Request →
         </button>
 
     </div>
@@ -515,32 +512,69 @@
 </section>
 
 
-<!-- SOCIALS -->
+<!-- =========================
+     SOCIALS
+========================= -->
 
-<section class="social-section">
+<section id="socials" class="socials section">
 
-    <p>FOLLOW C4PRINTZ</p>
+    <div class="section-header centered">
 
-    <h2>See what we're making.</h2>
+        <span class="eyebrow">
+            FOLLOW THE BUILD
+        </span>
 
-    <div class="social-buttons">
+        <h2>
+            SEE WHAT'S <span>NEW.</span>
+        </h2>
+
+        <p>
+            Follow C4Printz for new designs,
+            prints, and videos.
+        </p>
+
+    </div>
+
+
+    <div class="social-grid">
 
         <a
             href="https://www.tiktok.com/@c4printz"
             target="_blank"
-            class="social-button"
+            class="social-card"
         >
-            🎵 TikTok
-            <span>@C4Printz</span>
+
+            <div class="social-icon">
+                ♪
+            </div>
+
+            <div>
+                <strong>TikTok</strong>
+                <span>@c4printz</span>
+            </div>
+
+            <b>↗</b>
+
         </a>
+
 
         <a
             href="https://www.youtube.com/@C4printz"
             target="_blank"
-            class="social-button"
+            class="social-card"
         >
-            ▶️ YouTube
-            <span>@C4Printz</span>
+
+            <div class="social-icon">
+                ▶
+            </div>
+
+            <div>
+                <strong>YouTube</strong>
+                <span>@C4printz</span>
+            </div>
+
+            <b>↗</b>
+
         </a>
 
     </div>
@@ -548,100 +582,112 @@
 </section>
 
 
-<!-- CONTACT -->
+<!-- =========================
+     CONTACT
+========================= -->
 
-<section class="contact" id="contact">
+<section id="contact" class="contact section">
 
-    <p>CONTACT</p>
+    <span class="eyebrow">
+        QUESTIONS?
+    </span>
 
-    <h2>Need something?</h2>
+    <h2>
+        LET'S MAKE<br>
+        SOMETHING <span>COOL.</span>
+    </h2>
 
     <p>
-        Questions, custom ideas, or anything else?
+        Have a question or custom idea?
+        Get in touch.
     </p>
-
-    <a href="mailto:c4rocks@icloud.com">
-        c4rocks@icloud.com
-    </a>
 
 </section>
 
-</main>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        C4<span>PRINTZ</span>
+    </div>
+
+    <p>
+        Custom prints. Made different.
+    </p>
+
+    <div class="footer-links">
+
+        <a href="#shop">Shop</a>
+        <a href="#custom">Custom</a>
+        <a href="#socials">Socials</a>
+
+    </div>
+
+    <small>
+        © 2026 C4Printz
+    </small>
+
+</footer>
 
 
-<!-- PRODUCT MODAL -->
+<!-- =========================
+     PRODUCT MODAL
+========================= -->
 
-<div class="modal" id="productModal">
+<div
+    id="productModal"
+    class="modal"
+    onclick="closeModal(event)"
+>
 
-    <div class="product-modal">
+    <div
+        class="modal-box"
+        onclick="event.stopPropagation()"
+    >
 
-        <button class="close" onclick="closeProduct()">
-            ✕
+        <button
+            class="modal-close"
+            onclick="closeProduct()"
+        >
+            ×
         </button>
 
-        <div class="modal-image" id="modalImage">
-            🐉
+        <div
+            id="modalImage"
+            class="modal-image"
+        >
         </div>
 
-        <div class="modal-content">
+        <div class="modal-details">
 
-            <span id="modalTag">
-                POPULAR
+            <span class="eyebrow">
+                C4PRINTZ
             </span>
 
-            <h2 id="modalTitle">
-                Mini Dragon
+            <h2 id="modalName">
+                Product
             </h2>
 
             <p id="modalDescription">
                 Product description.
             </p>
 
-
-            <label>Size</label>
-
-            <select id="modalSize" onchange="updatePrice()">
-
-                <option value="5">
-                    Small — $5
-                </option>
-
-                <option value="10">
-                    Medium — $10
-                </option>
-
-                <option value="15">
-                    Large — $15
-                </option>
-
-            </select>
-
-
-            <label>Color</label>
-
-            <select id="modalColor">
-
-                <option>Black</option>
-                <option>White</option>
-                <option>Blue</option>
-                <option>Red</option>
-                <option>Green</option>
-                <option>Yellow</option>
-                <option>Purple</option>
-
-            </select>
-
-
-            <div class="modal-price" id="modalPrice">
-                $5
-            </div>
-
+            <strong
+                id="modalPrice"
+                class="modal-price"
+            >
+                $0.00
+            </strong>
 
             <button
-                class="add-button"
-                onclick="addProductToCart()"
+                class="custom-button"
+                onclick="addModalProduct()"
             >
-                Add to Cart 🛒
+                Add To Cart
             </button>
 
         </div>
@@ -651,76 +697,60 @@
 </div>
 
 
-<!-- CART MODAL -->
+<!-- =========================
+     CART MODAL
+========================= -->
 
-<div class="modal" id="cartModal">
+<div
+    id="cartModal"
+    class="modal"
+    onclick="closeCart(event)"
+>
 
-    <div class="cart-box">
+    <div
+        class="cart-box"
+        onclick="event.stopPropagation()"
+    >
 
-        <button class="close" onclick="closeCart()">
-            ✕
+        <button
+            class="modal-close"
+            onclick="closeCart()"
+        >
+            ×
         </button>
 
-        <h2>Your Cart 🛒</h2>
+        <span class="eyebrow">
+            YOUR ORDER
+        </span>
 
-        <div id="cartItems">
-            Your cart is empty.
-        </div>
+        <h2>
+            CART
+        </h2>
 
+        <div id="cartItems"></div>
 
         <div class="cart-total">
 
-            <span>Total</span>
+            <span>
+                Total
+            </span>
 
             <strong id="cartTotal">
-                $0
+                $0.00
             </strong>
 
         </div>
 
-
-        <button class="checkout-button" onclick="checkout()">
-            Checkout →
+        <button
+            class="custom-button"
+            onclick="requestOrder()"
+        >
+            Request Order →
         </button>
 
     </div>
 
 </div>
-
-
-<footer>
-
-    <div class="logo">
-        C4<span>Printz</span>
-    </div>
-
-    <p>
-        Custom 3D prints made your way.
-    </p>
-
-    <div class="footer-socials">
-
-        <a
-            href="https://www.tiktok.com/@c4printz"
-            target="_blank"
-        >
-            TikTok
-        </a>
-
-        <a
-            href="https://www.youtube.com/@C4printz"
-            target="_blank"
-        >
-            YouTube
-        </a>
-
-    </div>
-
-    <small>
-        © 2026 C4Printz
-    </small>
-
-</footer>
 
 
 <script src="script.js"></script>
