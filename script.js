@@ -1,419 +1,431 @@
 let cart = [];
 let currentProduct = null;
-let selectedSize = "Small";
-let quantity = 1;
-
+let currentQuantity = 1;
 
 /* =========================
-   PRODUCT MODAL
+PRODUCT MODAL
 ========================= */
 
 function viewProduct(name, emoji, image, description) {
 
-  currentProduct = {
-    name: name,
-    emoji: emoji,
-    image: image,
-    description: description
-  };
+currentProduct = {
+name: name,
+emoji: emoji,
+image: image,
+description: description
+};
 
-  selectedSize = "Small";
-  quantity = 1;
+currentQuantity = 1;
 
-  document.getElementById("modalName").textContent = name;
-  document.getElementById("modalDescription").textContent = description;
-  document.getElementById("modalEmoji").textContent = emoji;
-  document.getElementById("modalColor").value = "Black";
-  document.getElementById("quantityValue").textContent = "1";
+document.getElementById("modalName").textContent = name;
 
-  document.querySelectorAll(".size-button").forEach(button => {
-    button.classList.remove("active");
-  });
+document.getElementById("modalDescription").textContent =
+description;
 
-  document.querySelector(".size-button").classList.add("active");
+document.getElementById("modalQuantity").textContent = "1";
 
-  const photo = document.getElementById("modalPhoto");
-  const emoji = document.getElementById("modalEmoji");
+const photo = document.getElementById("modalPhoto");
+const emoji = document.getElementById("modalEmoji");
 
-  if (image) {
+emoji.textContent = currentProduct.emoji;
 
-    photo.src = image;
-    photo.style.display = "block";
-    emoji.style.display = "none";
+if (image) {
 
-    photo.onerror = function () {
-      photo.style.display = "none";
-      emoji.style.display = "block";
-    };
+```
+photo.src = image;
+photo.style.display = "block";
+emoji.style.display = "none";
 
-  } else {
+photo.onerror = function () {
+  photo.style.display = "none";
+  emoji.style.display = "block";
+};
+```
 
-    photo.style.display = "none";
-    emoji.style.display = "block";
+} else {
 
-  }
+```
+photo.style.display = "none";
+emoji.style.display = "block";
+```
 
-  document.getElementById("productModal").classList.add("show");
 }
 
+document
+.getElementById("productModal")
+.classList.add("show");
+}
 
 /* =========================
-   CLOSE PRODUCT
+CLOSE PRODUCT
 ========================= */
 
 function closeProduct() {
-  document
-    .getElementById("productModal")
-    .classList.remove("show");
+
+document
+.getElementById("productModal")
+.classList.remove("show");
+
 }
 
+/* =========================
+CLOSE MODAL
+========================= */
 
 function closeModal(event) {
 
-  if (event.target.classList.contains("modal")) {
-    event.target.classList.remove("show");
-  }
+if (
+event.target.classList.contains("modal")
+) {
+
+```
+event.target.classList.remove("show");
+```
 
 }
 
-
-/* =========================
-   SIZE
-========================= */
-
-function selectSize(button, size) {
-
-  selectedSize = size;
-
-  document.querySelectorAll(".size-button").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  button.classList.add("active");
 }
 
-
 /* =========================
-   QUANTITY
+QUANTITY
 ========================= */
 
 function changeQuantity(amount) {
 
-  quantity += amount;
+currentQuantity += amount;
 
-  if (quantity < 1) {
-    quantity = 1;
-  }
-
-  if (quantity > 20) {
-    quantity = 20;
-  }
-
-  document.getElementById("quantityValue").textContent =
-    quantity;
+if (currentQuantity < 1) {
+currentQuantity = 1;
 }
 
+if (currentQuantity > 20) {
+currentQuantity = 20;
+}
+
+document.getElementById("modalQuantity").textContent =
+currentQuantity;
+
+}
 
 /* =========================
-   ADD PRODUCT
+ADD PRODUCT
 ========================= */
 
 function addModalProduct() {
 
-  if (!currentProduct) return;
-
-  const color =
-    document.getElementById("modalColor").value;
-
-  for (let i = 0; i < quantity; i++) {
-
-    cart.push({
-
-      name: currentProduct.name,
-
-      color: color,
-
-      size: selectedSize
-
-    });
-
-  }
-
-  updateCart();
-
-  closeProduct();
-
-  openCart();
+if (!currentProduct) {
+return;
 }
 
+const size =
+document.getElementById("modalSize").value;
 
-/* =========================
-   CUSTOM FILE
-========================= */
+const color =
+document.getElementById("modalColor").value;
 
-function previewCAD(event) {
+for (
+let i = 0;
+i < currentQuantity;
+i++
+) {
 
-  const file = event.target.files[0];
+```
+cart.push({
 
-  const fileName =
-    document.getElementById("fileName");
+  name: currentProduct.name,
 
-  if (file) {
+  size: size,
 
-    fileName.textContent =
-      "Selected: " + file.name;
+  color: color
 
-  } else {
-
-    fileName.textContent = "";
-
-  }
+});
+```
 
 }
 
+updateCart();
 
-/* =========================
-   CUSTOM REQUEST
-========================= */
+closeProduct();
 
-function addCustomToCart() {
+openCart();
 
-  const file =
-    document.getElementById("customFile").files[0];
-
-  const description =
-    document
-      .getElementById("customDescription")
-      .value
-      .trim();
-
-  const color =
-    document.getElementById("customColor").value;
-
-
-  if (!file && !description) {
-
-    alert(
-      "Please upload an STL/CAD file or describe what you want."
-    );
-
-    return;
-
-  }
-
-
-  cart.push({
-
-    name: "Custom Print",
-
-    color: color,
-
-    size: "Custom",
-
-    fileName: file
-      ? file.name
-      : "No file",
-
-    description:
-      description || "Custom print request"
-
-  });
-
-
-  document.getElementById("customFile").value = "";
-
-  document.getElementById("customDescription").value = "";
-
-  document.getElementById("fileName").textContent = "";
-
-  updateCart();
-
-  openCart();
 }
 
-
 /* =========================
-   CART
+CART
 ========================= */
 
 function updateCart() {
 
-  const box =
-    document.getElementById("cartItems");
+const box =
+document.getElementById("cartItems");
 
-  const count =
-    document.getElementById("cartCount");
+const count =
+document.getElementById("cartCount");
 
+count.textContent = cart.length;
 
-  count.textContent = cart.length;
+if (!cart.length) {
 
+```
+box.innerHTML =
+  '<div class="empty-cart">Your cart is empty.</div>';
 
-  if (cart.length === 0) {
-
-    box.innerHTML =
-      '<div class="empty-cart">Your cart is empty.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML = "";
-
-
-  cart.forEach((item, index) => {
-
-    const el =
-      document.createElement("div");
-
-    el.className = "cart-item";
-
-
-    el.innerHTML = `
-
-      <div class="cart-item-info">
-
-        <strong>
-          ${escapeHTML(item.name)}
-        </strong>
-
-        <small>
-          Color: ${escapeHTML(item.color || "Not selected")}
-          <br>
-          Size: ${escapeHTML(item.size || "Custom")}
-
-          ${
-            item.fileName
-              ? `<br>File: ${escapeHTML(item.fileName)}`
-              : ""
-          }
-
-          ${
-            item.description
-              ? `<br>${escapeHTML(item.description)}`
-              : ""
-          }
-
-        </small>
-
-      </div>
-
-
-      <span class="cart-brand">
-        C4Printz
-      </span>
-
-
-      <button
-        onclick="removeItem(${index})"
-      >
-        ×
-      </button>
-
-    `;
-
-
-    box.appendChild(el);
-
-  });
+return;
+```
 
 }
 
+box.innerHTML = "";
+
+cart.forEach(
+function (item, index) {
+
+```
+  const element =
+    document.createElement("div");
+
+  element.className = "cart-item";
+
+  element.innerHTML = `
+
+    <div>
+
+      <strong>
+        ${escapeHTML(item.name)}
+      </strong>
+
+      <small>
+        Size: ${escapeHTML(item.size || "Custom")}
+        <br>
+        Color: ${escapeHTML(item.color || "Not selected")}
+
+        ${
+          item.fileName
+            ? "<br>File: " +
+              escapeHTML(item.fileName)
+            : ""
+        }
+
+        ${
+          item.description
+            ? "<br>" +
+              escapeHTML(item.description)
+            : ""
+        }
+
+      </small>
+
+    </div>
+
+    <span>
+      C4Printz
+    </span>
+
+    <button
+      onclick="removeItem(${index})"
+    >
+      ×
+    </button>
+
+  `;
+
+  box.appendChild(element);
+
+}
+```
+
+);
+
+}
 
 /* =========================
-   REMOVE
+REMOVE ITEM
 ========================= */
 
 function removeItem(index) {
 
-  cart.splice(index, 1);
+cart.splice(index, 1);
 
-  updateCart();
+updateCart();
 
 }
 
-
 /* =========================
-   OPEN CART
+OPEN CART
 ========================= */
 
 function openCart() {
 
-  updateCart();
+updateCart();
 
-  document
-    .getElementById("cartModal")
-    .classList.add("show");
+document
+.getElementById("cartModal")
+.classList.add("show");
 
 }
 
-
 /* =========================
-   CLOSE CART
+CLOSE CART
 ========================= */
 
 function closeCart(event) {
 
-  if (
-    !event ||
-    event.target.id === "cartModal"
-  ) {
+if (
+!event ||
+event.target.id === "cartModal"
+) {
 
-    document
-      .getElementById("cartModal")
-      .classList.remove("show");
-
-  }
+```
+document
+  .getElementById("cartModal")
+  .classList.remove("show");
+```
 
 }
 
+}
 
 /* =========================
-   CHECKOUT
+CUSTOM FILE
+========================= */
+
+function previewCAD(event) {
+
+const file =
+event.target.files[0];
+
+const fileName =
+document.getElementById("fileName");
+
+if (!file) {
+
+```
+fileName.textContent = "";
+
+return;
+```
+
+}
+
+fileName.textContent =
+"Selected: " + file.name;
+
+}
+
+/* =========================
+CUSTOM PRINT
+========================= */
+
+function addCustomToCart() {
+
+const file =
+document.getElementById("customFile").files[0];
+
+const description =
+document
+.getElementById("customDescription")
+.value
+.trim();
+
+const color =
+document
+.getElementById("customColor")
+.value;
+
+if (!file && !description) {
+
+```
+alert(
+  "Please upload an STL/CAD file or describe what you want."
+);
+
+return;
+```
+
+}
+
+cart.push({
+
+```
+name: "Custom Print",
+
+size: "Custom",
+
+color: color,
+
+fileName:
+  file
+    ? file.name
+    : "No file",
+
+description:
+  description ||
+  "Custom print request"
+```
+
+});
+
+document
+.getElementById("customFile")
+.value = "";
+
+document
+.getElementById("customDescription")
+.value = "";
+
+document
+.getElementById("fileName")
+.textContent = "";
+
+updateCart();
+
+openCart();
+
+}
+
+/* =========================
+CHECKOUT
 ========================= */
 
 function requestOrder() {
 
-  if (cart.length === 0) {
+if (!cart.length) {
 
-    alert("Your cart is empty.");
+```
+alert("Your cart is empty.");
 
-    return;
-
-  }
-
-
-  alert(
-    "Thanks for your order request! 🎉\n\n" +
-
-    "C4Printz is still working on the " +
-    "online checkout system.\n\n" +
-
-    "Your request has been saved on this page, " +
-    "but no payment has been taken yet."
-  );
+return;
+```
 
 }
 
+alert(
+"Thanks for your order request! 🎉\n\n" +
+"C4Printz is still working on the online " +
+"checkout system.\n\n" +
+"No payment has been taken."
+);
+
+}
 
 /* =========================
-   SECURITY
+SECURITY
 ========================= */
 
 function escapeHTML(text) {
 
-  const div =
-    document.createElement("div");
+const div =
+document.createElement("div");
 
-  div.textContent = text;
+div.textContent = text;
 
-  return div.innerHTML;
+return div.innerHTML;
 
 }
 
-
 /* =========================
-   START
+START
 ========================= */
 
 updateCart();
