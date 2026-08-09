@@ -1,118 +1,316 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>C4Printz</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C4Printz | Custom 3D Prints</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <h1>🔥 C4Printz 🔥</h1>
-  <p>www.c4printz.com • Custom 3D Prints • Fast • High Quality</p>
+<header class="navbar">
+    <div class="logo">C4<span>Printz</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#custom">Custom Print</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-<section class="products">
 
-  <!-- Mini Dragon -->
+<section class="hero" id="home">
 
-  <div class="product">
-    <img src="https://via.placeholder.com/200">
-    <h2>Mini Dragon</h2>
+    <div class="hero-content">
+        <p class="small-title">WELCOME TO C4PRINTZ</p>
 
-```
-<label>Size:</label>
-<select onchange="updatePrice(this, 'dragonPrice')">
-  <option value="5">Small ($5)</option>
-  <option value="10">Medium ($10)</option>
-  <option value="15">Large ($15)</option>
-</select>
+        <h1>
+            TURN YOUR<br>
+            <span>IDEAS INTO PRINTS.</span>
+        </h1>
 
-<p id="dragonPrice">$5</p>
+        <p class="hero-text">
+            High-quality custom 3D prints made just for you.
+            Choose a product or send us your own design.
+        </p>
 
-<button onclick="orderNow()">Order Now</button>
-```
-
-  </div>
-
-  <!-- Phone Stand -->
-
-  <div class="product">
-    <img src="https://via.placeholder.com/200">
-    <h2>Phone Stand</h2>
-
-```
-<label>Size:</label>
-<select onchange="updatePrice(this, 'standPrice')">
-  <option value="5">Small ($5)</option>
-  <option value="10">Medium ($10)</option>
-  <option value="15">Large ($15)</option>
-</select>
-
-<p id="standPrice">$5</p>
-
-<button onclick="orderNow()">Order Now</button>
-```
-
-  </div>
-
-  <!-- Custom Print -->
-
-  <div class="product">
-    <img src="https://via.placeholder.com/200" id="customPreview">
-    <h2>Custom 3D Print</h2>
-
-```
-<label>Size:</label>
-<select onchange="updatePrice(this, 'customPrice')">
-  <option value="5">Small ($5)</option>
-  <option value="10">Medium ($10)</option>
-  <option value="15">Large ($15)</option>
-</select>
-
-<p id="customPrice">$5</p>
-
-<label>Upload your file:</label>
-<input type="file" accept="image/*,.stl,.obj" onchange="previewFile(event)">
-<p id="fileName">No file selected</p>
-
-<button onclick="orderNow()">Order Now</button>
-```
-
-  </div>
+        <div class="hero-buttons">
+            <a href="#products" class="button primary">Shop Prints</a>
+            <a href="#custom" class="button secondary">Custom Print</a>
+        </div>
+    </div>
 
 </section>
 
+
+<section class="products-section" id="products">
+
+    <div class="section-title">
+        <p>OUR PRODUCTS</p>
+        <h2>Pick Your Print</h2>
+    </div>
+
+
+    <div class="products">
+
+        <!-- MINI DRAGON -->
+
+        <div class="product-card">
+
+            <div class="product-image dragon">
+                🐉
+            </div>
+
+            <div class="product-info">
+
+                <span class="tag">POPULAR</span>
+
+                <h3>Mini Dragon</h3>
+
+                <p>
+                    A fun articulated mini dragon that looks awesome
+                    on your desk or shelf.
+                </p>
+
+                <label>Choose Size</label>
+
+                <select onchange="updatePrice(this, 'dragonPrice')">
+                    <option value="5">Small — $5</option>
+                    <option value="10">Medium — $10</option>
+                    <option value="15">Large — $15</option>
+                </select>
+
+                <div class="price" id="dragonPrice">$5</div>
+
+                <button onclick="order('Mini Dragon')">
+                    Order Now →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PHONE STAND -->
+
+        <div class="product-card">
+
+            <div class="product-image phone">
+                📱
+            </div>
+
+            <div class="product-info">
+
+                <span class="tag">USEFUL</span>
+
+                <h3>Phone Stand</h3>
+
+                <p>
+                    A clean and simple 3D printed phone stand
+                    for your desk.
+                </p>
+
+                <label>Choose Size</label>
+
+                <select onchange="updatePrice(this, 'standPrice')">
+                    <option value="5">Small — $5</option>
+                    <option value="10">Medium — $10</option>
+                    <option value="15">Large — $15</option>
+                </select>
+
+                <div class="price" id="standPrice">$5</div>
+
+                <button onclick="order('Phone Stand')">
+                    Order Now →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CUSTOM PRINT -->
+
+<section class="custom-section" id="custom">
+
+    <div class="custom-box">
+
+        <div class="custom-text">
+
+            <p class="small-title">MAKE SOMETHING YOURS</p>
+
+            <h2>Custom<br><span>3D Prints.</span></h2>
+
+            <p>
+                Have your own design? Upload an image or 3D model
+                and we'll take a look at it.
+            </p>
+
+            <div class="supported">
+                ✓ JPG / PNG images<br>
+                ✓ STL files<br>
+                ✓ OBJ files
+            </div>
+
+        </div>
+
+
+        <div class="upload-box">
+
+            <div class="upload-icon">📤</div>
+
+            <h3>Upload Your Design</h3>
+
+            <p>Choose an image or 3D file from your computer.</p>
+
+            <input
+                type="file"
+                id="customFile"
+                accept="image/*,.stl,.obj"
+                onchange="previewCustom(event)"
+            >
+
+            <label for="customFile" class="upload-button">
+                Choose File
+            </label>
+
+            <p id="fileName">No file selected</p>
+
+            <img id="customPreview" class="custom-preview">
+
+            <label>Choose Size</label>
+
+            <select onchange="updatePrice(this, 'customPrice')">
+                <option value="5">Small — $5</option>
+                <option value="10">Medium — $10</option>
+                <option value="15">Large — $15</option>
+            </select>
+
+            <div class="price" id="customPrice">$5</div>
+
+            <button onclick="customOrder()">
+                Request Custom Print →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <p class="small-title">GET IN TOUCH</p>
+
+    <h2>Have a question?</h2>
+
+    <p>
+        Email us and we'll get back to you.
+    </p>
+
+    <a href="mailto:c4rocks@icloud.com" class="email">
+        c4rocks@icloud.com
+    </a>
+
+</section>
+
+
 <footer>
-  <p>🌐 www.c4printz.com</p>
-  <p>📧 c4rocks@icloud.com</p>
+
+    <div class="footer-logo">
+        C4<span>Printz</span>
+    </div>
+
+    <p>Custom 3D prints made your way.</p>
+
+    <p class="copyright">
+        © 2026 C4Printz. All rights reserved.
+    </p>
+
 </footer>
 
+
 <script>
+
 function updatePrice(select, id) {
-  document.getElementById(id).innerText = "$" + select.value;
+
+    document.getElementById(id).innerText =
+        "$" + select.value;
+
 }
 
-function previewFile(event) {
-  const file = event.target.files[0];
-  if (!file) return;
 
-  document.getElementById("fileName").innerText = file.name;
+function previewCustom(event) {
 
-  if (file.type.startsWith("image/")) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      document.getElementById("customPreview").src = e.target.result;
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    document.getElementById("fileName").innerText =
+        file.name;
+
+    if (file.type.startsWith("image/")) {
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            const preview =
+                document.getElementById("customPreview");
+
+            preview.src = e.target.result;
+
+            preview.style.display = "block";
+
+        };
+
+        reader.readAsDataURL(file);
+
     }
-    reader.readAsDataURL(file);
-  }
+
 }
 
-function orderNow() {
-  alert("Order received! Next step: connect payments + file sending.");
+
+function order(product) {
+
+    alert(
+        "Thanks for your interest in the " +
+        product +
+        "! The next step is connecting real checkout."
+    );
+
 }
+
+
+function customOrder() {
+
+    const file =
+        document.getElementById("customFile").files[0];
+
+    if (!file) {
+
+        alert("Please upload your design first!");
+
+        return;
+
+    }
+
+    alert(
+        "Your design has been selected! " +
+        "The next step is connecting real order submission."
+    );
+
+}
+
 </script>
 
 </body>
