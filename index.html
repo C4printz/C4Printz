@@ -1,756 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="C4Printz — custom 3D prints and unique designs."
-    >
-
-    <title>C4Printz | Custom 3D Prints</title>
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>C4Printz</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
-<header class="navbar">
-
-    <a href="#home" class="logo">
-        C4<span>PRINTZ</span>
-    </a>
-
-    <nav>
-        <a href="#shop">Shop</a>
-        <a href="#custom">Custom</a>
-        <a href="#socials">Socials</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <button
-        class="cart-button"
-        onclick="openCart()"
-        aria-label="Open cart"
-    >
-        🛒
-        <span id="cartCount">0</span>
-    </button>
-
+<header>
+  <h1>C4Printz</h1>
+  <div class="cart" onclick="openCart()">🛒 Cart (<span id="cart-count">0</span>)</div>
 </header>
 
+<nav>
+  <a href="#shop">Shop</a>
+  <a href="#custom">Custom</a>
+  <a href="#social">Socials</a>
+</nav>
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- SHOP -->
+<section id="shop">
+  <h2>Products</h2>
 
-<section id="home" class="hero">
+  <div class="product-row">
 
-    <div class="hero-content">
-
-        <div class="hero-label">
-            C4PRINTZ • 3D PRINTED
-        </div>
-
-        <h1>
-            PRINTED<br>
-            <span>DIFFERENT.</span>
-        </h1>
-
-        <p>
-            Unique 3D prints, custom designs, and cool stuff
-            made to order.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#shop" class="button primary">
-                Shop Prints
-            </a>
-
-            <a href="#custom" class="button secondary">
-                Create Your Own
-            </a>
-
-        </div>
-
-        <div class="hero-stats">
-
-            <div>
-                <strong>10+</strong>
-                <span>Designs</span>
-            </div>
-
-            <div>
-                <strong>100%</strong>
-                <span>Made to Order</span>
-            </div>
-
-            <div>
-                <strong>∞</strong>
-                <span>Custom Ideas</span>
-            </div>
-
-        </div>
-
+    <div class="product">
+      <h3>Mini Dragon</h3>
+      <button onclick="viewProduct(['https://via.placeholder.com/300','https://via.placeholder.com/301'])">View Product</button>
+      <button onclick="addToCart('Mini Dragon')">Add to Cart</button>
     </div>
 
-    <div class="hero-visual">
-
-        <div class="glow"></div>
-
-        <div class="hero-object">
-            🖨️
-        </div>
-
-        <div class="floating-card card-one">
-            NEW
-        </div>
-
-        <div class="floating-card card-two">
-            CUSTOM
-        </div>
-
+    <div class="product">
+      <h3>Phone Stand</h3>
+      <button onclick="viewProduct(['https://via.placeholder.com/302'])">View Product</button>
+      <button onclick="addToCart('Phone Stand')">Add to Cart</button>
     </div>
+
+    <div class="product">
+      <h3>Custom Costume Prop</h3>
+      <button onclick="viewProduct(['https://via.placeholder.com/303'])">View Product</button>
+      <button onclick="addToCart('Costume Prop')">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- CUSTOM -->
+<section id="custom">
+  <h2>Create Your Own</h2>
+
+  <input type="file" id="upload" accept="image/*">
+
+  <button onclick="addCustom()">Add Custom to Cart</button>
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+  <h2>Follow Us</h2>
+
+  <a href="https://www.tiktok.com/@c4printz" target="_blank">TikTok</a>
+  <a href="https://www.youtube.com/@C4printz" target="_blank">YouTube</a>
 
 </section>
 
-
-<!-- =========================
-     SHOP
-========================= -->
-
-<section id="shop" class="shop section">
-
-    <div class="section-header">
-
-        <div>
-            <span class="eyebrow">THE COLLECTION</span>
-
-            <h2>
-                SHOP <span>PRINTS.</span>
-            </h2>
-        </div>
-
-        <p>
-            Pick something you like or make your own.
-        </p>
-
-    </div>
-
-
-    <div class="products">
-
-        <!-- PRODUCT 1 -->
-
-        <article class="product-card">
-
-            <div class="product-image">
-
-                <span class="product-tag">
-                    POPULAR
-                </span>
-
-                <div class="product-placeholder">
-                    🐉
-                </div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>Flexi Dragon</h3>
-
-                    <p>
-                        A flexible articulated dragon
-                        that's fun to play with and display.
-                    </p>
-
-                </div>
-
-                <div class="product-bottom">
-
-                    <strong>$12.00</strong>
-
-                    <button
-                        onclick="viewProduct(
-                            'Flexi Dragon',
-                            12,
-                            '🐉',
-                            'A flexible articulated dragon.'
-                        )"
-                    >
-                        View Product →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- PRODUCT 2 -->
-
-        <article class="product-card">
-
-            <div class="product-image">
-
-                <span class="product-tag">
-                    NEW
-                </span>
-
-                <div class="product-placeholder">
-                    🦖
-                </div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>Dinosaur</h3>
-
-                    <p>
-                        A cool articulated dinosaur
-                        for your desk or shelf.
-                    </p>
-
-                </div>
-
-                <div class="product-bottom">
-
-                    <strong>$10.00</strong>
-
-                    <button
-                        onclick="viewProduct(
-                            'Dinosaur',
-                            10,
-                            '🦖',
-                            'A cool articulated dinosaur.'
-                        )"
-                    >
-                        View Product →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- PRODUCT 3 -->
-
-        <article class="product-card">
-
-            <div class="product-image">
-
-                <div class="product-placeholder">
-                    🐙
-                </div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>Flexi Octopus</h3>
-
-                    <p>
-                        A fun articulated octopus
-                        with lots of movement.
-                    </p>
-
-                </div>
-
-                <div class="product-bottom">
-
-                    <strong>$9.00</strong>
-
-                    <button
-                        onclick="viewProduct(
-                            'Flexi Octopus',
-                            9,
-                            '🐙',
-                            'A fun articulated octopus.'
-                        )"
-                    >
-                        View Product →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- PRODUCT 4 -->
-
-        <article class="product-card">
-
-            <div class="product-image">
-
-                <span class="product-tag">
-                    COOL
-                </span>
-
-                <div class="product-placeholder">
-                    🦈
-                </div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>Flexi Shark</h3>
-
-                    <p>
-                        A flexible shark that makes
-                        a great desk decoration.
-                    </p>
-
-                </div>
-
-                <div class="product-bottom">
-
-                    <strong>$11.00</strong>
-
-                    <button
-                        onclick="viewProduct(
-                            'Flexi Shark',
-                            11,
-                            '🦈',
-                            'A flexible articulated shark.'
-                        )"
-                    >
-                        View Product →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-
-        <!-- PRODUCT 5 -->
-
-        <article class="product-card">
-
-            <div class="product-image">
-
-                <div class="product-placeholder">
-                    🐢
-                </div>
-
-            </div>
-
-            <div class="product-info">
-
-                <div>
-
-                    <h3>Flexi Turtle</h3>
-
-                    <p>
-                        A small articulated turtle
-                        that's easy to take anywhere.
-                    </p>
-
-                </div>
-
-                <div class="product-bottom">
-
-                    <strong>$8.00</strong>
-
-                    <button
-                        onclick="viewProduct(
-                            'Flexi Turtle',
-                            8,
-                            '🐢',
-                            'A small articulated turtle.'
-                        )"
-                    >
-                        View Product →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-    </div>
-
-    <div class="slider-hint">
-        ← DRAG OR SWIPE TO EXPLORE →
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CUSTOM
-========================= -->
-
-<section id="custom" class="custom section">
-
-    <div class="custom-copy">
-
-        <span class="eyebrow">
-            GOT AN IDEA?
-        </span>
-
-        <h2>
-            MAKE IT<br>
-            <span>YOUR OWN.</span>
-        </h2>
-
-        <p>
-            Have a picture, idea, logo, character, or
-            something completely random you want printed?
-            Send it to us and we'll take a look.
-        </p>
-
-        <div class="custom-features">
-
-            <div>
-                <strong>01</strong>
-                <span>Send your idea</span>
-            </div>
-
-            <div>
-                <strong>02</strong>
-                <span>We review it</span>
-            </div>
-
-            <div>
-                <strong>03</strong>
-                <span>Get your print</span>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="custom-box">
-
-        <div class="upload-icon">
-            ↑
-        </div>
-
-        <h3>
-            Create a Custom Print
-        </h3>
-
-        <p>
-            Upload an image or tell us what you want.
-        </p>
-
-
-        <label>
-            YOUR IMAGE
-        </label>
-
-        <label class="upload-button">
-
-            <label class="upload-button">
-    Upload Image
-    <input
-        type="file"
-        id="customFile"
-        accept="image/*"
-        onchange="previewImage(event)"
-        hidden
-    >
-</label>
-
-<img id="filePreview">
-
-<p id="fileName"></p>
-
-
-        <label>
-            WHAT DO YOU WANT?
-        </label>
-
-        <textarea
-            id="customDescription"
-            placeholder="Tell us what you want printed..."
-        ></textarea>
-
-
-        <button
-            class="custom-button"
-            onclick="addCustomToCart()"
-        >
-            Add Custom Request →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     SOCIALS
-========================= -->
-
-<section id="socials" class="socials section">
-
-    <div class="section-header centered">
-
-        <span class="eyebrow">
-            FOLLOW THE BUILD
-        </span>
-
-        <h2>
-            SEE WHAT'S <span>NEW.</span>
-        </h2>
-
-        <p>
-            Follow C4Printz for new designs,
-            prints, and videos.
-        </p>
-
-    </div>
-
-
-    <div class="social-grid">
-
-        <a
-            href="https://www.tiktok.com/@c4printz"
-            target="_blank"
-            class="social-card"
-        >
-
-            <div class="social-icon">
-                ♪
-            </div>
-
-            <div>
-                <strong>TikTok</strong>
-                <span>@c4printz</span>
-            </div>
-
-            <b>↗</b>
-
-        </a>
-
-
-        <a
-            href="https://www.youtube.com/@C4printz"
-            target="_blank"
-            class="social-card"
-        >
-
-            <div class="social-icon">
-                ▶
-            </div>
-
-            <div>
-                <strong>YouTube</strong>
-                <span>@C4printz</span>
-            </div>
-
-            <b>↗</b>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section id="contact" class="contact section">
-
-    <span class="eyebrow">
-        QUESTIONS?
-    </span>
-
-    <h2>
-        LET'S MAKE<br>
-        SOMETHING <span>COOL.</span>
-    </h2>
-
-    <p>
-        Have a question or custom idea?
-        Get in touch.
-    </p>
-
-</section>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- CART POPUP -->
+<div id="cart-box" class="cart-box">
+  <h2>Your Cart</h2>
+  <ul id="cart-items"></ul>
+  <button onclick="checkout()">Checkout</button>
+</div>
+
+<!-- PRODUCT VIEW -->
+<div id="viewer" class="viewer"></div>
 
 <footer>
-
-    <div class="footer-logo">
-        C4<span>PRINTZ</span>
-    </div>
-
-    <p>
-        Custom prints. Made different.
-    </p>
-
-    <div class="footer-links">
-
-        <a href="#shop">Shop</a>
-        <a href="#custom">Custom</a>
-        <a href="#socials">Socials</a>
-
-    </div>
-
-    <small>
-        © 2026 C4Printz
-    </small>
-
+  <p>Email: c4rocks@icloud.com</p>
+  <p>© C4Printz</p>
 </footer>
 
-
-<!-- =========================
-     PRODUCT MODAL
-========================= -->
-
-<div
-    id="productModal"
-    class="modal"
-    onclick="closeModal(event)"
->
-
-    <div
-        class="modal-box"
-        onclick="event.stopPropagation()"
-    >
-
-        <button
-            class="modal-close"
-            onclick="closeProduct()"
-        >
-            ×
-        </button>
-
-        <div
-            id="modalImage"
-            class="modal-image"
-        >
-        </div>
-
-        <div class="modal-details">
-
-            <span class="eyebrow">
-                C4PRINTZ
-            </span>
-
-            <h2 id="modalName">
-                Product
-            </h2>
-
-            <p id="modalDescription">
-                Product description.
-            </p>
-
-            <strong
-                id="modalPrice"
-                class="modal-price"
-            >
-                $0.00
-            </strong>
-
-            <button
-                class="custom-button"
-                onclick="addModalProduct()"
-            >
-                Add To Cart
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================
-     CART MODAL
-========================= -->
-
-<div
-    id="cartModal"
-    class="modal"
-    onclick="closeCart(event)"
->
-
-    <div
-        class="cart-box"
-        onclick="event.stopPropagation()"
-    >
-
-        <button
-            class="modal-close"
-            onclick="closeCart()"
-        >
-            ×
-        </button>
-
-        <span class="eyebrow">
-            YOUR ORDER
-        </span>
-
-        <h2>
-            CART
-        </h2>
-
-        <div id="cartItems"></div>
-
-        <div class="cart-total">
-
-            <span>
-                Total
-            </span>
-
-            <strong id="cartTotal">
-                $0.00
-            </strong>
-
-        </div>
-
-        <button
-            class="custom-button"
-            onclick="requestOrder()"
-        >
-            Request Order →
-        </button>
-
-    </div>
-
-</div>
-
-
 <script src="script.js"></script>
-
 </body>
 </html>
