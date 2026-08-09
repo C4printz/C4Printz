@@ -424,46 +424,119 @@
 
 
 <!-- PRODUCT MODAL -->
-<div class="modal" id="productModal" onclick="closeModal(event)">
-
-  <div class="modal-box" onclick="event.stopPropagation()">
-
-    <button class="modal-close" onclick="closeProduct()">×</button>
-
-    <div class="modal-image">
-      <img id="modalPhoto" alt="Product">
-      <div id="modalEmoji">🐉</div>
-    </div>
-
-    <div class="modal-details">
-
-      <span class="eyebrow">C4PRINTZ</span>
-
-      <h2 id="modalName">Product</h2>
-
-      <p id="modalDescription">Product description.</p>
-
-      <div class="modal-options">
-        <div>
-          <small>COLOR</small>
-          <strong id="modalColor">Black</strong>
-        </div>
-
-        <div>
-          <small>SIZE</small>
-          <strong id="modalSize">Medium</strong>
-        </div>
-      </div>
-
-      <button class="custom-button" onclick="addModalProduct()">
-        ADD TO CART →
-      </button>
-
-    </div>
-
+```html
+<article class="product-card">
+  <div class="product-image">
+    <span class="tag">POPULAR</span>
+    <div class="product-emoji">🐉</div>
   </div>
-</div>
 
+  <div class="product-info">
+    <h3>Flexi Dragon</h3>
+    <p>A flexible articulated dragon that's fun to play with and display.</p>
+
+    <button class="view-product-btn"
+      onclick="viewProduct(
+        'Flexi Dragon',
+        '🐉',
+        'images/dragon.jpg',
+        'A flexible articulated dragon.'
+      )">
+      View Product <span>→</span>
+    </button>
+  </div>
+</article>
+
+
+<article class="product-card">
+  <div class="product-image">
+    <span class="tag">NEW</span>
+    <div class="product-emoji">🦖</div>
+  </div>
+
+  <div class="product-info">
+    <h3>Dinosaur</h3>
+    <p>A cool articulated dinosaur for your desk or shelf.</p>
+
+    <button class="view-product-btn"
+      onclick="viewProduct(
+        'Dinosaur',
+        '🦖',
+        'images/dinosaur.jpg',
+        'A cool articulated dinosaur.'
+      )">
+      View Product <span>→</span>
+    </button>
+  </div>
+</article>
+
+
+<article class="product-card">
+  <div class="product-image">
+    <div class="product-emoji">🐙</div>
+  </div>
+
+  <div class="product-info">
+    <h3>Flexi Octopus</h3>
+    <p>A fun articulated octopus with lots of movement.</p>
+
+    <button class="view-product-btn"
+      onclick="viewProduct(
+        'Flexi Octopus',
+        '🐙',
+        'images/octopus.jpg',
+        'A fun articulated octopus.'
+      )">
+      View Product <span>→</span>
+    </button>
+  </div>
+</article>
+
+
+<article class="product-card">
+  <div class="product-image">
+    <span class="tag">COOL</span>
+    <div class="product-emoji">🦈</div>
+  </div>
+
+  <div class="product-info">
+    <h3>Flexi Shark</h3>
+    <p>A flexible shark that makes a great desk decoration.</p>
+
+    <button class="view-product-btn"
+      onclick="viewProduct(
+        'Flexi Shark',
+        '🦈',
+        'images/shark.jpg',
+        'A flexible articulated shark.'
+      )">
+      View Product <span>→</span>
+    </button>
+  </div>
+</article>
+
+
+<article class="product-card">
+  <div class="product-image">
+    <div class="product-emoji">🐢</div>
+  </div>
+
+  <div class="product-info">
+    <h3>Flexi Turtle</h3>
+    <p>A small articulated turtle that's easy to take anywhere.</p>
+
+    <button class="view-product-btn"
+      onclick="viewProduct(
+        'Flexi Turtle',
+        '🐢',
+        'images/turtle.jpg',
+        'A small articulated turtle.'
+      )">
+      View Product <span>→</span>
+    </button>
+  </div>
+</article>
+```
 
 <!-- CART MODAL -->
 <div class="modal" id="cartModal" onclick="closeCart(event)">
