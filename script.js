@@ -1,621 +1,423 @@
-```javascript
-/* =========================================
-   C4PRINTZ
-   MAIN JAVASCRIPT
-========================================= */
-
 let cart = [];
 let currentProduct = null;
-let currentQuantity = 1;
+let currentSize = "Small";
+let quantity = 1;
 
 
-/* =========================================
-   ELEMENTS
-========================================= */
+/* =========================
+   PRODUCT MODAL
+========================= */
 
-const productModal = document.getElementById("productModal");
-const cartModal = document.getElementById("cartModal");
+function viewProduct(name, emoji, image, description) {
 
-const modalName = document.getElementById("modalName");
-const modalDescription = document.getElementById("modalDescription");
-const modalPhoto = document.getElementById("modalPhoto");
-const modalEmoji = document.getElementById("modalEmoji");
+  currentProduct = {
+    name: name,
+    emoji: emoji,
+    image: image,
+    description: description
+  };
 
-const modalColor = document.getElementById("modalColor");
-const modalSize = document.getElementById("modalSize");
-const modalQuantity = document.getElementById("modalQuantity");
+  currentSize = "Small";
+  quantity = 1;
 
-const cartItems = document.getElementById("cartItems");
-const cartCount = document.getElementById("cartCount");
-const cartTotalItems = document.getElementById("cartTotalItems");
+  document.getElementById("modalName").textContent = name;
+  document.getElementById("modalDescription").textContent = description;
+  document.getElementById("modalEmoji").textContent = emoji;
+  document.getElementById("quantityValue").textContent = quantity;
 
+  document.querySelectorAll(".option").forEach(function(button) {
+    button.classList.remove("active");
 
-/* =========================================
-   PRODUCT BUTTONS
-========================================= */
+    if (button.textContent.trim() === "Small") {
+      button.classList.add("active");
+    }
+  });
 
-document.querySelectorAll(".view-product").forEach(button => {
+  document.getElementById("modalColor").value = "Black";
 
-    button.addEventListener("click", () => {
+  const photo = document.getElementById("modalPhoto");
+  const emoji = document.getElementById("modalEmoji");
 
-        const name = button.dataset.name;
-        const emoji = button.dataset.emoji;
-        const image = button.dataset.image;
-        const description = button.dataset.description;
+  photo.style.display = "none";
+  emoji.style.display = "block";
 
-        openProduct(
-            name,
-            emoji,
-            image,
-            description
-        );
+  if (image) {
 
-    });
-
-});
-
-
-/* =========================================
-   OPEN PRODUCT
-========================================= */
-
-function openProduct(
-    name,
-    emoji,
-    image,
-    description
-){
-
-    currentProduct = {
-        name,
-        emoji,
-        image,
-        description
+    photo.onload = function() {
+      photo.style.display = "block";
+      emoji.style.display = "none";
     };
 
-    currentQuantity = 1;
+    photo.onerror = function() {
+      photo.style.display = "none";
+      emoji.style.display = "block";
+    };
 
-    modalName.textContent = name;
-    modalDescription.textContent = description;
-    modalEmoji.textContent = emoji;
+    photo.src = image;
+  }
 
-    modalColor.value = "Black";
-    modalSize.value = "Medium";
-    modalQuantity.textContent = "1";
+  document.getElementById("productModal").classList.add("show");
 
-    /*
-       Start with the emoji visible.
-       The image replaces it only if it
-       actually loads.
-    */
-
-    modalPhoto.style.display = "none";
-    modalEmoji.style.display = "block";
-
-    if(image){
-
-        modalPhoto.onload = function(){
-
-            modalPhoto.style.display = "block";
-            modalEmoji.style.display = "none";
-
-        };
-
-        modalPhoto.onerror = function(){
-
-            modalPhoto.style.display = "none";
-            modalEmoji.style.display = "block";
-
-        };
-
-        modalPhoto.src = image;
-
-    }
-
-    productModal.classList.add("show");
-    productModal.setAttribute("aria-hidden","false");
-
-    document.body.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
 }
 
 
-/* =========================================
+/* =========================
+   SIZE
+========================= */
+
+function selectOption(button, type) {
+
+  if (type !== "size") return;
+
+  document.querySelectorAll(".option").forEach(function(item) {
+    item.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  currentSize = button.textContent.trim();
+}
+
+
+/* =========================
+   QUANTITY
+========================= */
+
+function changeQuantity(amount) {
+
+  quantity += amount;
+
+  if (quantity < 1) {
+    quantity = 1;
+  }
+
+  if (quantity > 20) {
+    quantity = 20;
+  }
+
+  document.getElementById("quantityValue").textContent = quantity;
+}
+
+
+/* =========================
    CLOSE PRODUCT
-========================================= */
+========================= */
 
-function closeProduct(){
+function closeProduct() {
 
-    productModal.classList.remove("show");
-    productModal.setAttribute("aria-hidden","true");
+  document
+    .getElementById("productModal")
+    .classList.remove("show");
+
+  document.body.style.overflow = "";
+}
+
+
+/* =========================
+   MODAL BACKGROUND
+========================= */
+
+function closeModal(event) {
+
+  if (event.target.classList.contains("modal")) {
+
+    event.target.classList.remove("show");
 
     document.body.style.overflow = "";
+  }
 }
 
 
-/* =========================================
-   QUANTITY
-========================================= */
+/* =========================
+   ADD PRODUCT
+========================= */
 
-document.getElementById("quantityMinus").addEventListener(
-    "click",
-    () => {
+function addModalProduct() {
 
-        if(currentQuantity > 1){
-            currentQuantity--;
-            modalQuantity.textContent = currentQuantity;
-        }
+  if (!currentProduct) {
+    return;
+  }
 
-    }
-);
+  const color =
+    document.getElementById("modalColor").value;
 
+  for (let i = 0; i < quantity; i++) {
 
-document.getElementById("quantityPlus").addEventListener(
-    "click",
-    () => {
-
-        if(currentQuantity < 99){
-            currentQuantity++;
-            modalQuantity.textContent = currentQuantity;
-        }
-
-    }
-);
-
-
-/* =========================================
-   ADD PRODUCT TO CART
-========================================= */
-
-document.getElementById("addModalButton").addEventListener(
-    "click",
-    () => {
-
-        if(!currentProduct){
-            return;
-        }
-
-        const color = modalColor.value;
-        const size = modalSize.value;
-
-        cart.push({
-
-            name: currentProduct.name,
-
-            color: color,
-
-            size: size,
-
-            quantity: currentQuantity
-
-        });
-
-        updateCart();
-
-        closeProduct();
-
-        openCart();
-
-    }
-);
-
-
-/* =========================================
-   CUSTOM FILE
-========================================= */
-
-const customFile = document.getElementById("customFile");
-const fileName = document.getElementById("fileName");
-
-customFile.addEventListener(
-    "change",
-    () => {
-
-        const file = customFile.files[0];
-
-        if(file){
-
-            fileName.textContent =
-                "Selected: " + file.name;
-
-        }else{
-
-            fileName.textContent = "";
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   ADD CUSTOM REQUEST
-========================================= */
-
-document.getElementById("addCustomButton").addEventListener(
-    "click",
-    () => {
-
-        const file = customFile.files[0];
-
-        const description =
-            document
-                .getElementById("customDescription")
-                .value
-                .trim();
-
-        const color =
-            document
-                .getElementById("customColor")
-                .value;
-
-
-        if(!file && !description){
-
-            alert(
-                "Please upload an STL/CAD file or describe what you want."
-            );
-
-            return;
-
-        }
-
-
-        cart.push({
-
-            name: "Custom Print",
-
-            color: color,
-
-            size: "Custom",
-
-            quantity: 1,
-
-            fileName:
-                file
-                    ? file.name
-                    : "No file",
-
-            description:
-                description
-                    ? description
-                    : "Custom print request"
-
-        });
-
-
-        customFile.value = "";
-
-        document
-            .getElementById("customDescription")
-            .value = "";
-
-        fileName.textContent = "";
-
-
-        updateCart();
-
-        openCart();
-
-    }
-);
-
-
-/* =========================================
-   UPDATE CART
-========================================= */
-
-function updateCart(){
-
-    cartCount.textContent = cart.reduce(
-        (total,item) =>
-            total + (item.quantity || 1),
-        0
-    );
-
-
-    if(cart.length === 0){
-
-        cartItems.innerHTML =
-            '<div class="empty-cart">Your cart is empty.</div>';
-
-        cartTotalItems.textContent = "0";
-
-        return;
-
-    }
-
-
-    cartItems.innerHTML = "";
-
-
-    let totalItems = 0;
-
-
-    cart.forEach((item,index) => {
-
-        const quantity =
-            item.quantity || 1;
-
-        totalItems += quantity;
-
-
-        const element =
-            document.createElement("div");
-
-        element.className = "cart-item";
-
-
-        let details =
-            "Color: " +
-            escapeHTML(
-                item.color || "Not selected"
-            );
-
-
-        if(item.size){
-
-            details +=
-                "<br>Size: " +
-                escapeHTML(item.size);
-
-        }
-
-
-        details +=
-            "<br>Quantity: " +
-            quantity;
-
-
-        if(item.fileName){
-
-            details +=
-                "<br>File: " +
-                escapeHTML(item.fileName);
-
-        }
-
-
-        if(item.description){
-
-            details +=
-                "<br>" +
-                escapeHTML(item.description);
-
-        }
-
-
-        element.innerHTML = `
-
-            <div>
-
-                <strong>
-                    ${escapeHTML(item.name)}
-                </strong>
-
-                <small>
-                    ${details}
-                </small>
-
-            </div>
-
-            <span class="cart-brand">
-                C4Printz
-            </span>
-
-            <button
-                type="button"
-                aria-label="Remove item"
-            >
-                ×
-            </button>
-
-        `;
-
-
-        element
-            .querySelector("button")
-            .addEventListener(
-                "click",
-                () => removeItem(index)
-            );
-
-
-        cartItems.appendChild(element);
-
+    cart.push({
+      name: currentProduct.name,
+      color: color,
+      size: currentSize
     });
 
+  }
 
-    cartTotalItems.textContent =
-        totalItems;
+  updateCart();
 
+  closeProduct();
+
+  openCart();
 }
 
 
-/* =========================================
-   REMOVE ITEM
-========================================= */
+/* =========================
+   CUSTOM FILE
+========================= */
 
-function removeItem(index){
+function previewCAD(event) {
 
-    cart.splice(index,1);
+  const file =
+    event.target.files[0];
 
-    updateCart();
+  const fileName =
+    document.getElementById("fileName");
 
+  if (!file) {
+
+    fileName.textContent = "";
+
+    return;
+  }
+
+  fileName.textContent =
+    "Selected: " + file.name;
 }
 
 
-/* =========================================
+/* =========================
+   CUSTOM REQUEST
+========================= */
+
+function addCustomToCart() {
+
+  const file =
+    document.getElementById("customFile").files[0];
+
+  const description =
+    document
+      .getElementById("customDescription")
+      .value
+      .trim();
+
+  const color =
+    document.getElementById("customColor").value;
+
+
+  if (!file && !description) {
+
+    alert(
+      "Please upload an STL/CAD file or describe what you want."
+    );
+
+    return;
+  }
+
+
+  cart.push({
+
+    name: "Custom Print",
+
+    color: color,
+
+    size: "Custom",
+
+    fileName:
+      file ? file.name : "No file",
+
+    description:
+      description || "Custom print request"
+
+  });
+
+
+  document.getElementById("customFile").value = "";
+
+  document.getElementById("customDescription").value = "";
+
+  document.getElementById("fileName").textContent = "";
+
+
+  updateCart();
+
+  openCart();
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function updateCart() {
+
+  const box =
+    document.getElementById("cartItems");
+
+  const count =
+    document.getElementById("cartCount");
+
+
+  count.textContent = cart.length;
+
+
+  if (!cart.length) {
+
+    box.innerHTML =
+      '<div class="empty-cart">Your cart is empty.</div>';
+
+    return;
+  }
+
+
+  box.innerHTML = "";
+
+
+  cart.forEach(function(item, index) {
+
+    const element =
+      document.createElement("div");
+
+    element.className = "cart-item";
+
+
+    element.innerHTML = `
+
+      <div>
+
+        <strong>
+          ${escapeHTML(item.name)}
+        </strong>
+
+        <small>
+
+          Color:
+          ${escapeHTML(item.color || "Not selected")}
+
+          <br>
+
+          Size:
+          ${escapeHTML(item.size || "Custom")}
+
+          ${
+            item.fileName
+              ? "<br>File: " +
+                escapeHTML(item.fileName)
+              : ""
+          }
+
+          ${
+            item.description
+              ? "<br>" +
+                escapeHTML(item.description)
+              : ""
+          }
+
+        </small>
+
+      </div>
+
+      <button
+        onclick="removeItem(${index})"
+        aria-label="Remove item"
+      >
+        ×
+      </button>
+
+    `;
+
+
+    box.appendChild(element);
+
+  });
+}
+
+
+/* =========================
+   REMOVE
+========================= */
+
+function removeItem(index) {
+
+  cart.splice(index, 1);
+
+  updateCart();
+}
+
+
+/* =========================
    OPEN CART
-========================================= */
+========================= */
 
-function openCart(){
+function openCart() {
 
-    updateCart();
+  updateCart();
 
-    cartModal.classList.add("show");
+  document
+    .getElementById("cartModal")
+    .classList.add("show");
 
-    cartModal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-    document.body.style.overflow = "hidden";
-
+  document.body.style.overflow = "hidden";
 }
 
 
-/* =========================================
+/* =========================
    CLOSE CART
-========================================= */
+========================= */
 
-function closeCart(){
+function closeCart(event) {
 
-    cartModal.classList.remove("show");
+  if (
+    !event ||
+    event.target.id === "cartModal"
+  ) {
 
-    cartModal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
+    document
+      .getElementById("cartModal")
+      .classList.remove("show");
 
     document.body.style.overflow = "";
-
+  }
 }
 
 
-/* =========================================
-   NAV CART BUTTON
-========================================= */
-
-document
-    .getElementById("openCartButton")
-    .addEventListener(
-        "click",
-        openCart
-    );
-
-
-/* =========================================
-   CLOSE BUTTONS
-========================================= */
-
-document
-    .getElementById("closeProductButton")
-    .addEventListener(
-        "click",
-        closeProduct
-    );
-
-
-document
-    .getElementById("closeCartButton")
-    .addEventListener(
-        "click",
-        closeCart
-    );
-
-
-/* =========================================
-   CLICK OUTSIDE MODALS
-========================================= */
-
-productModal.addEventListener(
-    "click",
-    event => {
-
-        if(event.target === productModal){
-
-            closeProduct();
-
-        }
-
-    }
-);
-
-
-cartModal.addEventListener(
-    "click",
-    event => {
-
-        if(event.target === cartModal){
-
-            closeCart();
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   ESCAPE KEY
-========================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(event.key === "Escape"){
-
-            closeProduct();
-            closeCart();
-
-        }
-
-    }
-);
-
-
-/* =========================================
+/* =========================
    CHECKOUT
-========================================= */
+========================= */
 
-document
-    .getElementById("checkoutButton")
-    .addEventListener(
-        "click",
-        () => {
+function requestOrder() {
 
-            if(cart.length === 0){
+  if (!cart.length) {
 
-                alert(
-                    "Your cart is empty."
-                );
+    alert("Your cart is empty.");
 
-                return;
-
-            }
+    return;
+  }
 
 
-            alert(
-                "Thanks for your order request! 🎉\n\n" +
-                "C4Printz is still working on the online checkout system. " +
-                "No payment has been taken.\n\n" +
-                "We'll have online checkout available soon!"
-            );
-
-        }
-    );
-
-
-/* =========================================
-   SECURITY
-========================================= */
-
-function escapeHTML(text){
-
-    const div =
-        document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
-
+  alert(
+    "Thanks for your order request! 🎉\n\n" +
+    "C4Printz is still working on the online checkout system.\n\n" +
+    "No payment has been taken."
+  );
 }
 
 
-/* =========================================
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHTML(text) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent = text;
+
+  return div.innerHTML;
+}
+
+
+/* =========================
    START
-========================================= */
+========================= */
 
 updateCart();
-```
