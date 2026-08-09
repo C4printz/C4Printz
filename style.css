@@ -12,7 +12,20 @@ body {
     background: #070809;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
+
+button,
+select,
+textarea,
+input {
+    font-family: inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header {
     height: 76px;
@@ -29,7 +42,7 @@ header {
     background: rgba(7, 8, 9, .92);
     backdrop-filter: blur(18px);
 
-    border-bottom: 1px solid #252729;
+    border-bottom: 1px solid #222426;
 }
 
 .logo {
@@ -38,6 +51,7 @@ header {
 
     font-size: 25px;
     font-weight: 900;
+    letter-spacing: -1px;
 }
 
 .logo span {
@@ -46,13 +60,17 @@ header {
 
 nav {
     display: flex;
+    align-items: center;
     gap: 32px;
 }
 
 nav a {
-    color: #999;
+    color: #8b8e90;
     text-decoration: none;
+
     font-size: 14px;
+    font-weight: 600;
+
     transition: .2s;
 }
 
@@ -69,16 +87,19 @@ nav a:hover {
     background: #111314;
     color: white;
 
-    border: 1px solid #333;
+    border: 1px solid #303335;
     border-radius: 10px;
 
     font-size: 19px;
 
     cursor: pointer;
+
+    transition: .2s;
 }
 
 .cart-button:hover {
     border-color: #00e5ff;
+    transform: translateY(-2px);
 }
 
 #cartCount {
@@ -100,11 +121,13 @@ nav a:hover {
     border-radius: 50%;
 
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 900;
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 650px;
@@ -118,8 +141,8 @@ nav a:hover {
     background:
         radial-gradient(
             circle at 75% 50%,
-            rgba(0, 229, 255, .17),
-            transparent 30%
+            rgba(0, 229, 255, .16),
+            transparent 32%
         );
 }
 
@@ -131,19 +154,18 @@ nav a:hover {
     display: inline-block;
 
     padding: 8px 14px;
-
     margin-bottom: 22px;
 
     color: #00e5ff;
 
-    border: 1px solid rgba(0, 229, 255, .3);
+    border: 1px solid rgba(0, 229, 255, .28);
 
     background: rgba(0, 229, 255, .06);
 
     border-radius: 30px;
 
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 800;
     letter-spacing: 2px;
 }
 
@@ -167,7 +189,6 @@ nav a:hover {
     color: #888;
 
     font-size: 18px;
-
     line-height: 1.6;
 
     margin-bottom: 35px;
@@ -186,7 +207,7 @@ nav a:hover {
 
     text-decoration: none;
 
-    font-weight: bold;
+    font-weight: 800;
 
     transition: .2s;
 }
@@ -198,6 +219,7 @@ nav a:hover {
 
 .secondary-button {
     color: white;
+
     border: 1px solid #333;
 }
 
@@ -237,54 +259,88 @@ nav a:hover {
 }
 
 
-/* SHOP */
+/* =========================
+   SHOP
+========================= */
 
 .shop {
-    padding: 110px 7%;
+    padding: 105px 5%;
 
     background: #0b0c0d;
 }
 
 .section-heading {
     text-align: center;
-    margin-bottom: 55px;
+
+    margin-bottom: 45px;
 }
 
-.section-heading p,
-.custom-text > p,
-.social-section > p,
-.contact > p {
+.section-heading p {
     color: #00e5ff;
 
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 800;
 
     letter-spacing: 3px;
+
+    margin-bottom: 9px;
 }
 
 .section-heading h2 {
-    font-size: 52px;
-    margin: 7px 0;
+    font-size: clamp(42px, 5vw, 55px);
+
+    letter-spacing: -2px;
+
+    margin-bottom: 8px;
 }
 
 .section-heading span {
     color: #666;
+
+    font-size: 15px;
 }
 
+
+/* PRODUCT SLIDER */
+
 .products {
-    max-width: 1200px;
+    max-width: 1250px;
 
     margin: auto;
 
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
+    display: flex;
 
     gap: 25px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 10px 5px 30px;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+}
+
+.products::-webkit-scrollbar {
+    height: 7px;
+}
+
+.products::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.products::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 20px;
 }
 
 .product-card {
+    flex: 0 0 360px;
+
+    scroll-snap-align: start;
+
     overflow: hidden;
 
     background: #111314;
@@ -306,7 +362,7 @@ nav a:hover {
 }
 
 .product-image {
-    height: 260px;
+    height: 330px;
 
     position: relative;
 
@@ -323,7 +379,7 @@ nav a:hover {
 }
 
 .placeholder {
-    font-size: 95px;
+    font-size: 125px;
 
     transition: .3s;
 }
@@ -349,15 +405,18 @@ nav a:hover {
     border-radius: 20px;
 
     font-size: 9px;
-    font-weight: bold;
+    font-weight: 900;
+
+    letter-spacing: .5px;
 }
 
 .product-content {
-    padding: 24px;
+    padding: 25px;
 }
 
 .product-content h3 {
-    font-size: 23px;
+    font-size: 25px;
+
     margin-bottom: 8px;
 }
 
@@ -374,7 +433,7 @@ nav a:hover {
 .product-bottom strong {
     display: block;
 
-    font-size: 19px;
+    font-size: 20px;
 
     margin-bottom: 13px;
 }
@@ -382,7 +441,7 @@ nav a:hover {
 .product-bottom button {
     width: 100%;
 
-    padding: 13px;
+    padding: 14px;
 
     background: #181a1b;
 
@@ -394,39 +453,75 @@ nav a:hover {
 
     cursor: pointer;
 
+    font-weight: 700;
+
     transition: .2s;
 }
 
 .product-bottom button:hover {
     background: #00e5ff;
+
     color: #001014;
 
     border-color: #00e5ff;
 }
 
+.shop-slider-hint {
+    text-align: center;
 
-/* CUSTOM */
+    color: #555;
+
+    font-size: 12px;
+
+    margin-top: 8px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   CUSTOM PRINT
+========================= */
 
 .custom-section {
-    padding: 110px 8%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 100px 30px;
 
     display: grid;
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 80px;
+    gap: 60px;
 
     align-items: center;
 }
 
+.custom-text {
+    max-width: 500px;
+}
+
+.custom-text > p:first-child {
+    color: #00e5ff;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 14px;
+}
+
 .custom-text h2 {
-    font-size: 62px;
+    font-size: clamp(42px, 5vw, 64px);
 
     line-height: .95;
 
-    letter-spacing: -4px;
+    letter-spacing: -3px;
 
-    margin: 15px 0 25px;
+    margin-bottom: 22px;
 }
 
 .custom-text h2 span {
@@ -434,34 +529,60 @@ nav a:hover {
 }
 
 .custom-text > p:last-child {
-    max-width: 520px;
+    color: #777;
 
-    color: #888;
+    font-size: 16px;
 
     line-height: 1.7;
+
+    max-width: 470px;
 }
 
 .custom-box {
-    padding: 35px;
+    padding: 30px;
 
     background: #111314;
 
     border: 1px solid #292b2d;
 
-    border-radius: 20px;
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .25);
 }
 
 .upload-icon {
-    font-size: 40px;
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 229, 255, .08);
+
+    border: 1px solid rgba(0, 229, 255, .2);
+
+    border-radius: 12px;
+
+    font-size: 22px;
+
+    margin-bottom: 18px;
 }
 
 .custom-box h3 {
-    font-size: 27px;
-    margin: 8px 0;
+    font-size: 25px;
+
+    margin-bottom: 7px;
 }
 
 .custom-box > p {
-    color: #777;
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
     margin-bottom: 22px;
 }
 
@@ -470,42 +591,58 @@ input[type="file"] {
 }
 
 .upload-button {
-    display: block;
+    display: flex;
 
-    padding: 14px;
+    align-items: center;
+    justify-content: center;
 
-    text-align: center;
+    min-height: 48px;
 
     background: #191b1c;
 
     border: 1px solid #333;
 
-    border-radius: 8px;
+    border-radius: 9px;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
 
     cursor: pointer;
+
+    transition: .2s;
 }
 
 .upload-button:hover {
     border-color: #00e5ff;
+
+    background: #15191a;
 }
 
 #fileName {
+    min-height: 18px;
+
     color: #00e5ff;
 
     font-size: 12px;
 
-    margin: 12px 0;
+    margin-top: 10px;
 }
 
 #filePreview {
     display: none;
 
-    max-width: 180px;
+    width: 100%;
     max-height: 180px;
 
-    margin: 15px auto;
+    object-fit: contain;
+
+    margin: 15px 0;
 
     border-radius: 10px;
+
+    background: #080909;
 }
 
 .custom-box label {
@@ -514,8 +651,9 @@ input[type="file"] {
     color: #999;
 
     font-size: 12px;
+    font-weight: 600;
 
-    margin: 15px 0 6px;
+    margin: 17px 0 7px;
 }
 
 select,
@@ -535,6 +673,11 @@ textarea {
     outline: none;
 }
 
+select:focus,
+textarea:focus {
+    border-color: #00e5ff;
+}
+
 textarea {
     min-height: 100px;
 
@@ -544,42 +687,68 @@ textarea {
 .custom-cart-button {
     width: 100%;
 
-    padding: 14px;
+    min-height: 50px;
 
-    margin-top: 16px;
+    margin-top: 18px;
 
     border: 0;
 
-    border-radius: 8px;
+    border-radius: 9px;
 
     background: #00e5ff;
 
     color: #001014;
 
-    font-weight: bold;
+    font-weight: 800;
 
     cursor: pointer;
+
+    transition: .2s;
+}
+
+.custom-cart-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 229, 255, .15);
 }
 
 
-/* SOCIAL */
+/* =========================
+   SOCIALS
+========================= */
 
 .social-section {
-    padding: 100px 20px;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 80px 30px 100px;
 
     text-align: center;
+}
 
-    background: #0b0c0d;
+.social-section > p {
+    color: #00e5ff;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
 }
 
 .social-section h2 {
-    font-size: 45px;
+    font-size: clamp(35px, 5vw, 48px);
 
-    margin: 10px 0 35px;
+    letter-spacing: -2px;
+
+    margin-bottom: 35px;
 }
 
 .social-buttons {
-    max-width: 650px;
+    max-width: 760px;
 
     margin: auto;
 
@@ -587,65 +756,105 @@ textarea {
 
     grid-template-columns: 1fr 1fr;
 
-    gap: 15px;
+    gap: 18px;
 }
 
 .social-button {
-    padding: 20px;
+    min-height: 90px;
+
+    padding: 22px 25px;
 
     display: flex;
 
+    align-items: center;
+
     justify-content: space-between;
 
-    color: white;
-
     text-decoration: none;
+
+    color: white;
 
     background: #111314;
 
     border: 1px solid #292b2d;
 
-    border-radius: 12px;
+    border-radius: 14px;
 
-    transition: .2s;
-}
-
-.social-button span {
-    color: #777;
+    transition: .25s;
 }
 
 .social-button:hover {
+    transform: translateY(-4px);
+
     border-color: #00e5ff;
 
-    transform: translateY(-3px);
+    background: #141718;
+}
+
+.social-button span {
+    color: #666;
+
+    font-size: 13px;
 }
 
 
-/* CONTACT */
+/* =========================
+   CONTACT
+========================= */
 
 .contact {
-    padding: 100px 20px;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    padding: 80px 30px 100px;
 
     text-align: center;
+
+    border-top: 1px solid #202223;
+}
+
+.contact > p:first-child {
+    color: #00e5ff;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 10px;
 }
 
 .contact h2 {
     font-size: 45px;
-    margin: 10px 0 15px;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 12px;
 }
 
 .contact p {
-    color: #777;
-    margin-bottom: 12px;
+    color: #666;
+
+    margin-bottom: 15px;
 }
 
 .contact a {
     color: #00e5ff;
+
     text-decoration: none;
+
+    font-weight: 600;
+}
+
+.contact a:hover {
+    text-decoration: underline;
 }
 
 
-/* MODALS */
+/* =========================
+   PRODUCT MODAL
+========================= */
 
 .modal {
     position: fixed;
@@ -716,7 +925,9 @@ textarea {
     color: #00e5ff;
 
     font-size: 10px;
-    font-weight: bold;
+    font-weight: 800;
+
+    letter-spacing: 1px;
 }
 
 .modal-content h2 {
@@ -739,6 +950,7 @@ textarea {
     color: #999;
 
     font-size: 12px;
+    font-weight: 600;
 
     margin: 15px 0 6px;
 }
@@ -746,7 +958,7 @@ textarea {
 .modal-price {
     font-size: 32px;
 
-    font-weight: bold;
+    font-weight: 900;
 
     margin: 22px 0;
 }
@@ -765,9 +977,16 @@ textarea {
 
     color: #001014;
 
-    font-weight: bold;
+    font-weight: 800;
 
     cursor: pointer;
+
+    transition: .2s;
+}
+
+.add-button:hover,
+.checkout-button:hover {
+    transform: translateY(-2px);
 }
 
 .close {
@@ -792,8 +1011,14 @@ textarea {
     cursor: pointer;
 }
 
+.close:hover {
+    border-color: #00e5ff;
+}
 
-/* CART */
+
+/* =========================
+   CART
+========================= */
 
 .cart-box {
     width: min(520px, 100%);
@@ -815,11 +1040,13 @@ textarea {
 
 .cart-box h2 {
     font-size: 35px;
+
     margin-bottom: 25px;
 }
 
 .empty-cart {
     color: #777;
+
     padding: 30px 0;
 }
 
@@ -866,6 +1093,12 @@ textarea {
     cursor: pointer;
 }
 
+.cart-item > button:hover {
+    color: white;
+
+    background: #303335;
+}
+
 .cart-total {
     display: flex;
 
@@ -877,7 +1110,9 @@ textarea {
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     padding: 50px 20px;
@@ -911,6 +1146,8 @@ footer small {
     color: #888;
 
     text-decoration: none;
+
+    transition: .2s;
 }
 
 .footer-socials a:hover {
@@ -918,7 +1155,9 @@ footer small {
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 850px) {
 
@@ -934,18 +1173,39 @@ footer small {
         justify-content: center;
     }
 
-    .hero-art {
-        display: none;
+    .hero-content {
+        max-width: 600px;
     }
 
-    .products {
-        grid-template-columns: 1fr 1fr;
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-art {
+        display: none;
     }
 
     .custom-section {
         grid-template-columns: 1fr;
 
-        gap: 45px;
+        gap: 40px;
+
+        padding: 80px 20px;
+    }
+
+    .custom-text {
+        max-width: none;
+
+        text-align: center;
+    }
+
+    .custom-text > p:last-child {
+        margin: auto;
     }
 
     .product-modal {
@@ -954,8 +1214,17 @@ footer small {
 
     .modal-image {
         min-height: 260px;
+
+        font-size: 100px;
     }
 
+    .modal-content {
+        padding: 35px;
+    }
+
+    .social-section {
+        padding: 70px 20px 80px;
+    }
 }
 
 
@@ -971,6 +1240,7 @@ footer small {
 
     .hero h1 {
         font-size: 55px;
+
         letter-spacing: -4px;
     }
 
@@ -978,32 +1248,70 @@ footer small {
         flex-direction: column;
     }
 
-    .shop {
-        padding: 80px 20px;
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+
+        text-align: center;
     }
 
-    .products {
-        grid-template-columns: 1fr;
+    .shop {
+        padding: 80px 15px;
+    }
+
+    .product-card {
+        flex-basis: 310px;
+    }
+
+    .product-image {
+        height: 290px;
+    }
+
+    .placeholder {
+        font-size: 105px;
     }
 
     .custom-section {
-        padding: 80px 20px;
+        padding: 70px 20px;
     }
 
     .custom-text h2 {
         font-size: 48px;
     }
 
+    .custom-box {
+        padding: 23px;
+    }
+
     .social-buttons {
         grid-template-columns: 1fr;
     }
 
+    .social-button {
+        min-height: 75px;
+    }
+
+    .contact {
+        padding: 70px 20px 80px;
+    }
+
+    .contact h2 {
+        font-size: 40px;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
     .modal-content {
-        padding: 30px;
+        padding: 25px;
     }
 
     .cart-box {
         padding: 30px 20px;
     }
 
+    .cart-item {
+        grid-template-columns: 1fr auto auto;
+    }
 }
