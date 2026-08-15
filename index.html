@@ -1,1994 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>C4Printz | Custom 3D Prints & Designs</title>
-
-  <meta
-    name="description"
-    content="C4Printz creates custom 3D printed designs, articulated toys, unique prints, and custom 3D print orders."
-  >
-
+  <title>C4Printz | 3D Prints. Custom Creations. Your Ideas.</title>
+  <meta name="description" content="C4Printz creates custom 3D printed designs, articulated toys, unique prints, and custom 3D print orders.">
   <meta name="robots" content="index, follow">
-
-  <link
-    rel="canonical"
-    href="https://c4printz.github.io/C4Printz/"
-  >
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-
-body{
-background:#070809;
-color:#f5f7f8;
-font-family:Arial,Helvetica,sans-serif;
-overflow-x:hidden;
-}
-
-button,
-select,
-textarea{
-font:inherit;
-}
-
-button{
-cursor:pointer;
-}
-
-a{
-color:inherit;
-text-decoration:none;
-}
-
-/* NAV */
-
-.navbar{
-height:76px;
-padding:0 6%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-position:sticky;
-top:0;
-z-index:1000;
-background:#070809ee;
-backdrop-filter:blur(18px);
-border-bottom:1px solid #202326;
-}
-
-.logo{
-font-size:24px;
-font-weight:900;
-letter-spacing:-1.5px;
-}
-
-.logo span{
-color:#00e5ff;
-}
-
-.navbar nav{
-display:flex;
-gap:30px;
-}
-
-.navbar nav a{
-color:#888;
-font-size:13px;
-font-weight:700;
-}
-
-.navbar nav a:hover{
-color:white;
-}
-
-.cart-button{
-width:46px;
-height:46px;
-position:relative;
-border:1px solid #303437;
-border-radius:11px;
-background:#111;
-color:white;
-font-size:18px;
-}
-
-.cart-button:hover{
-border-color:#00e5ff;
-}
-
-#cartCount{
-position:absolute;
-right:-7px;
-top:-7px;
-width:21px;
-height:21px;
-display:grid;
-place-items:center;
-border-radius:50%;
-background:#00e5ff;
-color:#001014;
-font-size:10px;
-font-weight:900;
-}
-
-/* HERO */
-
-.hero{
-min-height:700px;
-padding:90px 9%;
-display:grid;
-grid-template-columns:1.1fr .9fr;
-align-items:center;
-gap:40px;
-background:radial-gradient(
-circle at 80% 45%,
-#00e5ff22,
-transparent 32%
-);
-}
-
-.eyebrow{
-display:block;
-color:#00e5ff;
-font-size:10px;
-font-weight:900;
-letter-spacing:3px;
-}
-
-.hero h1{
-font-size:clamp(60px,9vw,115px);
-line-height:.84;
-letter-spacing:-7px;
-margin:20px 0 30px;
-}
-
-.hero h1 span,
-h2 span{
-color:#00e5ff;
-}
-
-.hero p{
-max-width:570px;
-color:#818588;
-font-size:18px;
-line-height:1.6;
-margin-bottom:30px;
-}
-
-.hero-buttons{
-display:flex;
-gap:12px;
-margin-bottom:55px;
-}
-
-.button{
-padding:15px 23px;
-border-radius:9px;
-font-size:13px;
-font-weight:900;
-}
-
-.primary{
-background:#00e5ff;
-color:#001014;
-}
-
-.secondary{
-border:1px solid #333;
-background:#111;
-}
-
-.button:hover{
-transform:translateY(-2px);
-}
-
-.hero-stats{
-display:flex;
-gap:45px;
-}
-
-.hero-stats div{
-display:flex;
-flex-direction:column;
-gap:4px;
-}
-
-.hero-stats b{
-font-size:23px;
-}
-
-.hero-stats small{
-color:#666;
-font-size:10px;
-text-transform:uppercase;
-letter-spacing:1px;
-}
-
-.hero-visual{
-min-height:400px;
-position:relative;
-display:grid;
-place-items:center;
-}
-
-.glow{
-position:absolute;
-width:340px;
-height:340px;
-border-radius:50%;
-background:#00e5ff22;
-filter:blur(10px);
-}
-
-.hero-object{
-width:250px;
-height:250px;
-display:grid;
-place-items:center;
-position:relative;
-z-index:2;
-border-radius:35px;
-background:linear-gradient(145deg,#202526,#0d0f10);
-border:1px solid #383d3f;
-font-size:105px;
-transform:rotate(6deg);
-}
-
-.floating-card{
-position:absolute;
-padding:11px 14px;
-background:#111e;
-border:1px solid #34393b;
-border-radius:8px;
-font-size:9px;
-font-weight:900;
-letter-spacing:1px;
-}
-
-.one{
-top:60px;
-right:20px;
-color:#00e5ff;
-}
-
-.two{
-bottom:70px;
-left:15px;
-color:#aaa;
-}
-
-/* SECTIONS */
-
-.section{
-padding:100px 6%;
-}
-
-.shop,
-.socials{
-background:#0b0d0e;
-border-top:1px solid #181b1d;
-border-bottom:1px solid #181b1d;
-}
-
-.section-header{
-max-width:1250px;
-margin:0 auto 40px;
-display:flex;
-align-items:end;
-justify-content:space-between;
-gap:25px;
-}
-
-.section-header h2{
-font-size:clamp(45px,6vw,65px);
-line-height:.9;
-letter-spacing:-4px;
-margin-top:10px;
-}
-
-.section-header>p{
-max-width:320px;
-color:#656a6c;
-font-size:13px;
-line-height:1.6;
-}
-
-/* PRODUCTS */
-
-.products{
-max-width:1250px;
-margin:auto;
-display:flex;
-gap:20px;
-overflow-x:auto;
-padding:5px 3px 20px;
-scroll-snap-type:x mandatory;
-}
-
-.product-card{
-flex:0 0 330px;
-scroll-snap-align:start;
-overflow:hidden;
-border:1px solid #292e30;
-border-radius:17px;
-background:#111415;
-transition:.25s;
-}
-
-.product-card:hover{
-transform:translateY(-6px);
-border-color:#00e5ff;
-box-shadow:0 20px 50px #0008;
-}
-
-.product-image{
-height:270px;
-display:grid;
-place-items:center;
-position:relative;
-background:radial-gradient(
-circle,
-#292e30,
-#0d0f10
-);
-}
-
-.tag{
-position:absolute;
-top:14px;
-left:14px;
-padding:6px 9px;
-border-radius:20px;
-background:#00e5ff14;
-border:1px solid #00e5ff44;
-color:#00e5ff;
-font-size:8px;
-font-weight:900;
-}
-
-.product-emoji{
-font-size:105px;
-transition:.25s;
-}
-
-.product-card:hover .product-emoji{
-transform:scale(1.08) rotate(3deg);
-}
-
-.product-info{
-padding:22px;
-}
-
-.product-info h3{
-font-size:22px;
-margin-bottom:8px;
-}
-
-.product-info p{
-color:#727779;
-font-size:13px;
-line-height:1.5;
-margin-bottom:20px;
-}
-
-.view-button{
-width:100%;
-min-height:48px;
-border:1px solid #34393b;
-border-radius:9px;
-background:#191b1c;
-color:white;
-font-size:12px;
-font-weight:900;
-transition:.2s;
-}
-
-.view-button:hover{
-background:#00e5ff;
-color:#001014;
-border-color:#00e5ff;
-transform:translateY(-2px);
-}
-
-.slider-hint{
-text-align:center;
-padding-top:15px;
-color:#4f5456;
-font-size:9px;
-font-weight:800;
-letter-spacing:2px;
-}
-
-/* CUSTOM */
-
-.custom{
-max-width:1250px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:70px;
-align-items:center;
-}
-
-.custom-copy{
-max-width:550px;
-}
-
-.custom-copy h2{
-font-size:clamp(55px,7vw,82px);
-line-height:.85;
-letter-spacing:-5px;
-margin:14px 0 28px;
-}
-
-.custom-copy>p{
-color:#777;
-line-height:1.7;
-font-size:15px;
-}
-
-.custom-features{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:35px;
-}
-
-.custom-features div{
-border-top:1px solid #292d2f;
-padding-top:14px;
-}
-
-.custom-features b{
-display:block;
-color:#00e5ff;
-font-size:10px;
-margin-bottom:7px;
-}
-
-.custom-features span{
-color:#777;
-font-size:11px;
-}
-
-.custom-box{
-padding:30px;
-border:1px solid #303638;
-border-radius:18px;
-background:linear-gradient(145deg,#151819,#0d0f10);
-box-shadow:0 25px 70px #0006;
-}
-
-.custom-box h3{
-font-size:25px;
-margin-bottom:7px;
-}
-
-.custom-box>p{
-color:#666;
-font-size:13px;
-margin-bottom:22px;
-}
-
-.label{
-display:block;
-color:#777;
-font-size:9px;
-font-weight:900;
-letter-spacing:1.5px;
-margin:17px 0 8px;
-}
-
-input[type=file]{
-display:none;
-}
-
-.upload-button{
-min-height:48px;
-display:grid;
-place-items:center;
-border:1px dashed #3a4042;
-border-radius:9px;
-color:#aaa;
-font-size:12px;
-font-weight:700;
-cursor:pointer;
-}
-
-.upload-button:hover{
-color:#00e5ff;
-border-color:#00e5ff;
-}
-
-#fileName{
-color:#00e5ff;
-font-size:10px;
-margin-top:8px;
-min-height:14px;
-}
-
-.full-select,
-.modal-select{
-width:100%;
-height:48px;
-padding:0 12px;
-border:1px solid #333;
-border-radius:9px;
-background:#191b1c;
-color:white;
-outline:none;
-}
-
-.full-select:focus,
-.modal-select:focus{
-border-color:#00e5ff;
-}
-
-textarea{
-width:100%;
-min-height:100px;
-padding:14px;
-resize:vertical;
-border:1px solid #303537;
-border-radius:9px;
-outline:none;
-background:#0c0e0f;
-color:white;
-font-size:13px;
-}
-
-textarea:focus{
-border-color:#00e5ff;
-}
-
-.custom-button{
-width:100%;
-min-height:50px;
-margin-top:18px;
-border:0;
-border-radius:9px;
-background:#00e5ff;
-color:#001014;
-font-size:12px;
-font-weight:900;
-transition:.2s;
-}
-
-.custom-button:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 30px #00e5ff22;
-}
-
-/* SOCIALS */
-
-.centered{
-display:block;
-text-align:center;
-}
-
-.centered>p{
-margin:15px auto 0;
-}
-
-.social-grid{
-max-width:820px;
-margin:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:16px;
-}
-
-.social-card{
-min-height:100px;
-padding:22px;
-display:grid;
-grid-template-columns:48px 1fr auto;
-align-items:center;
-gap:16px;
-border:1px solid #292e30;
-border-radius:14px;
-background:#111415;
-}
-
-.social-card:hover{
-border-color:#00e5ff;
-transform:translateY(-4px);
-}
-
-.social-icon{
-width:48px;
-height:48px;
-display:grid;
-place-items:center;
-border-radius:11px;
-background:#1b1e20;
-font-size:20px;
-}
-
-.social-card b{
-display:block;
-margin-bottom:4px;
-}
-
-.social-card span{
-color:#666;
-font-size:11px;
-}
-
-.social-card>strong{
-color:#666;
-}
-
-/* CONTACT */
-
-.contact{
-text-align:center;
-border-top:1px solid #202426;
-}
-
-.contact h2{
-font-size:clamp(50px,7vw,80px);
-line-height:.88;
-letter-spacing:-5px;
-margin:15px 0 25px;
-}
-
-.contact p{
-color:#6e7476;
-font-size:14px;
-}
-
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:45px 20px;
-border-top:1px solid #202426;
-}
-
-.footer-logo{
-font-size:24px;
-font-weight:900;
-}
-
-.footer-logo span{
-color:#00e5ff;
-}
-
-footer p{
-color:#555;
-font-size:12px;
-margin:10px 0 20px;
-}
-
-.footer-links{
-display:flex;
-justify-content:center;
-gap:22px;
-margin-bottom:20px;
-}
-
-.footer-links a{
-color:#777;
-font-size:11px;
-}
-
-footer small{
-color:#444;
-font-size:9px;
-}
-
-/* MODALS */
-
-.modal{
-position:fixed;
-inset:0;
-z-index:5000;
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:#000d;
-backdrop-filter:blur(12px);
-}
-
-.modal.show{
-display:flex;
-}
-
-.modal-box{
-width:min(850px,100%);
-max-height:90vh;
-overflow:auto;
-display:grid;
-grid-template-columns:1fr 1fr;
-position:relative;
-border:1px solid #34393b;
-border-radius:18px;
-background:#111415;
-}
-
-.modal-image{
-min-height:450px;
-display:grid;
-place-items:center;
-background:radial-gradient(
-circle,
-#292e30,
-#0b0d0e
-);
-}
-
-.modal-image img{
-width:100%;
-height:100%;
-max-height:450px;
-object-fit:contain;
-display:none;
-}
-
-#modalEmoji{
-font-size:150px;
-}
-
-.modal-details{
-padding:45px;
-}
-
-.modal-details h2{
-font-size:40px;
-margin:10px 0 15px;
-}
-
-.modal-details p{
-color:#777;
-line-height:1.6;
-margin-bottom:22px;
-}
-
-.modal-label{
-display:block;
-color:#777;
-font-size:9px;
-font-weight:900;
-letter-spacing:1.5px;
-margin:15px 0 7px;
-}
-
-.quantity{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.quantity button{
-width:45px;
-height:45px;
-border:1px solid #333;
-border-radius:9px;
-background:#191b1c;
-color:white;
-font-size:20px;
-}
-
-.quantity button:hover{
-background:#00e5ff;
-color:#001014;
-}
-
-.quantity strong{
-min-width:25px;
-text-align:center;
-font-size:18px;
-}
-
-.modal-close{
-position:absolute;
-top:15px;
-right:15px;
-z-index:10;
-width:36px;
-height:36px;
-border:1px solid #333;
-border-radius:50%;
-background:#17191a;
-color:white;
-font-size:20px;
-}
-
-.modal-close:hover{
-border-color:#00e5ff;
-}
-
-/* CART */
-
-.cart-box{
-width:min(540px,100%);
-max-height:90vh;
-overflow:auto;
-position:relative;
-padding:45px;
-border:1px solid #34393b;
-border-radius:18px;
-background:#111415;
-}
-
-.cart-box h2{
-font-size:40px;
-margin:8px 0 25px;
-}
-
-.cart-item{
-padding:16px 0;
-display:grid;
-grid-template-columns:1fr auto;
-gap:15px;
-align-items:center;
-border-bottom:1px solid #292e30;
-}
-
-.cart-item strong{
-display:block;
-font-size:14px;
-margin-bottom:5px;
-}
-
-.cart-item small{
-color:#666;
-font-size:10px;
-line-height:1.6;
-}
-
-.cart-item button{
-width:30px;
-height:30px;
-border:0;
-border-radius:6px;
-background:#202325;
-color:#aaa;
-}
-
-.cart-item button:hover{
-background:#ff4d4d;
-color:white;
-}
-
-.empty-cart{
-color:#666;
-padding:25px 0;
-}
-
-/* MOBILE */
-
-@media(max-width:850px){
-
-.navbar nav{
-display:none;
-}
-
-.hero{
-grid-template-columns:1fr;
-text-align:center;
-padding:80px 25px;
-}
-
-.hero-content{
-margin:auto;
-}
-
-.hero p{
-margin:0 auto 30px;
-}
-
-.hero-buttons,
-.hero-stats{
-justify-content:center;
-}
-
-.hero-visual{
-display:none;
-}
-
-.section-header{
-display:block;
-text-align:center;
-}
-
-.section-header>p{
-margin:20px auto 0;
-}
-
-.custom{
-grid-template-columns:1fr;
-gap:50px;
-}
-
-.custom-copy{
-text-align:center;
-margin:auto;
-}
-
-.social-grid{
-grid-template-columns:1fr;
-}
-
-.modal-box{
-grid-template-columns:1fr;
-}
-
-.modal-image{
-min-height:260px;
-}
-
-.modal-image img{
-max-height:260px;
-}
-
-.modal-details{
-padding:30px;
-}
-
-}
-
-@media(max-width:550px){
-
-.navbar{
-padding:0 20px;
-}
-
-.hero{
-padding:70px 20px;
-}
-
-.hero h1{
-font-size:57px;
-letter-spacing:-4px;
-}
-
-.hero-buttons{
-flex-direction:column;
-}
-
-.button{
-width:100%;
-text-align:center;
-}
-
-.hero-stats{
-gap:22px;
-}
-
-.section{
-padding:75px 18px;
-}
-
-.product-card{
-flex-basis:300px;
-}
-
-.custom-copy h2{
-font-size:55px;
-}
-
-.custom-box{
-padding:23px;
-}
-
-.cart-box{
-padding:30px 20px;
-}
-
-}
-
-</style>
-
+  <link rel="canonical" href="https://c4printz.github.io/C4Printz/">
+  <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
+<header class="navbar" id="top">
+  <a href="#home" class="logo">C4<span>PRINTZ</span></a>
 
+  <nav id="desktopNav" aria-label="Main navigation">
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#custom">Custom Prints</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<header class="navbar">
-
-<a href="#home" class="logo">
-C4<span>PRINTZ</span>
-</a>
-
-<nav>
-<a href="#shop">Shop</a>
-<a href="#custom">Custom</a>
-<a href="#socials">Socials</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<button class="cart-button" onclick="openCart()">
-🛒
-<span id="cartCount">0</span>
-</button>
-
+  <div class="nav-actions">
+    <button class="cart-button" onclick="openCart()" aria-label="Open shopping cart">
+      🛒<span id="cartCount">0</span>
+    </button>
+    <button class="menu-button" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
 </header>
 
-
-<section class="hero" id="home">
-
-<div class="hero-content">
-
-<span class="eyebrow">
-C4PRINTZ • 3D PRINTED
-</span>
-
-<h1>
-PRINTED<br>
-<span>DIFFERENT.</span>
-</h1>
-
-<p>
-Unique 3D prints, custom designs, and cool stuff made to order.
-</p>
-
-<div class="hero-buttons">
-
-<a href="#shop" class="button primary">
-Shop Prints
-</a>
-
-<a href="#custom" class="button secondary">
-Create Your Own
-</a>
-
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMobileMenu()">Home</a>
+  <a href="#shop" onclick="closeMobileMenu()">Shop</a>
+  <a href="#custom" onclick="closeMobileMenu()">Custom Prints</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
 
-<div class="hero-stats">
-
-<div>
-<b>10+</b>
-<small>Designs</small>
-</div>
-
-<div>
-<b>100%</b>
-<small>Made To Order</small>
-</div>
-
-<div>
-<b>∞</b>
-<small>Custom Ideas</small>
-</div>
-
-</div>
-
-</div>
-
-<div class="hero-visual">
-
-<div class="glow"></div>
-
-<div class="hero-object">
-🖨️
-</div>
-
-<div class="floating-card one">
-NEW
-</div>
-
-<div class="floating-card two">
-CUSTOM
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section shop" id="shop">
-
-<div class="section-header">
-
-<div>
-
-<span class="eyebrow">
-THE COLLECTION
-</span>
-
-<h2>
-SHOP <span>PRINTS.</span>
-</h2>
-
-</div>
-
-<p>
-Pick something you like and customize it before adding it to your cart.
-</p>
-
-</div>
-
-
-<div class="products">
-
-
-<script>
-
-const products=[
-["Flexi Dragon","🐉","images/dragon.jpg","A flexible articulated dragon.","POPULAR"],
-["Dinosaur","🦖","images/dinosaur.jpg","A cool articulated dinosaur.","NEW"],
-["Flexi Octopus","🐙","images/octopus.jpg","A fun articulated octopus.",""],
-["Flexi Shark","🦈","images/shark.jpg","A flexible articulated shark.","COOL"],
-["Flexi Turtle","🐢","images/turtle.jpg","A small articulated turtle.",""]
-];
-
-document.write(
-products.map((p,i)=>`
-
-<article class="product-card">
-
-<div class="product-image">
-
-${p[4]?`<span class="tag">${p[4]}</span>`:""}
-
-<div class="product-emoji">
-${p[1]}
-</div>
-
-</div>
-
-<div class="product-info">
-
-<h3>${p[0]}</h3>
-
-<p>${p[3]}</p>
-
-<button
-class="view-button"
-onclick="viewProduct(
-'${p[0]}',
-'${p[1]}',
-'${p[2]}',
-'${p[3]}'
-)"
->
-View Product →
-</button>
-
-</div>
-
-</article>
-
-`).join("")
-);
-
-</script>
-
-
-</div>
-
-<div class="slider-hint">
-← DRAG OR SWIPE TO EXPLORE →
-</div>
-
-</section>
-
-
-<section class="section" id="custom">
-
-<div class="custom">
-
-<div class="custom-copy">
-
-<span class="eyebrow">
-GOT AN IDEA?
-</span>
-
-<h2>
-MAKE IT<br>
-<span>YOUR OWN.</span>
-</h2>
-
-<p>
-Have an STL, CAD file, logo, character, or something completely random you want printed? Send it in and we'll take a look.
-</p>
-
-<div class="custom-features">
-
-<div>
-<b>01</b>
-<span>Send your file</span>
-</div>
-
-<div>
-<b>02</b>
-<span>We review it</span>
-</div>
-
-<div>
-<b>03</b>
-<span>Get your print</span>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="custom-box">
-
-<h3>
-Custom Print
-</h3>
-
-<p>
-Upload your STL or CAD file and choose your options.
-</p>
-
-<label class="label">
-3D FILE
-</label>
-
-<label class="upload-button">
-
-Choose STL / CAD File
-
-<input
-type="file"
-id="customFile"
-accept=".stl,.obj,.3mf,.step,.stp,.iges,.igs,.f3d,.fcstd,.blend"
-onchange="previewCAD(event)"
->
-
-</label>
-
-<div id="fileName"></div>
-
-
-<label class="label">
-COLOR
-</label>
-
-<select id="customColor" class="full-select">
-
-<option>Black</option>
-<option>White</option>
-<option>Red</option>
-<option>Blue</option>
-<option>Green</option>
-<option>Yellow</option>
-
-</select>
-
-
-<label class="label">
-SIZE
-</label>
-
-<select id="customSize" class="full-select">
-
-<option>Small</option>
-<option>Medium</option>
-<option>Large</option>
-
-</select>
-
-
-<label class="label">
-DETAILS
-</label>
-
-<textarea
-id="customDescription"
-placeholder="Tell us what you want printed..."
-></textarea>
-
-
-<button
-class="custom-button"
-onclick="addCustomToCart()"
->
-Add Custom Request →
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="section socials" id="socials">
-
-<div class="section-header centered">
-
-<span class="eyebrow">
-FOLLOW THE BUILD
-</span>
-
-<h2>
-SEE WHAT'S <span>NEW.</span>
-</h2>
-
-<p>
-Follow C4Printz for new designs, prints, and videos.
-</p>
-
-</div>
-
-<div class="social-grid">
-
-<a
-href="https://www.youtube.com/@C4printz"
-target="_blank"
-class="social-card"
->
-
-<div class="social-icon">▶</div>
-
-<div>
-<b>YouTube</b>
-<span>@C4printz</span>
-</div>
-
-<strong>↗</strong>
-
-</a>
-
-
-<a
-href="https://www.tiktok.com/@c4printz"
-target="_blank"
-class="social-card"
->
-
-<div class="social-icon">♪</div>
-
-<div>
-<b>TikTok</b>
-<span>@c4printz</span>
-</div>
-
-<strong>↗</strong>
-
-</a>
-
-</div>
-
-</section>
-
-
-<section class="section contact" id="contact">
-
-<span class="eyebrow">
-QUESTIONS?
-</span>
-
-<h2>
-LET'S MAKE<br>
-SOMETHING <span>COOL.</span>
-</h2>
-
-<p>
-Have a question or custom idea? Get in touch.
-</p>
-
-</section>
-
+<main>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="eyebrow">C4PRINTZ • 3D PRINTED</span>
+      <h1>C4<span>PRINTZ</span></h1>
+      <h2>3D Prints. Custom Creations. Your Ideas.</h2>
+      <p>Custom 3D prints made for gamers, collectors, creators, and anyone with a cool idea.</p>
+
+      <div class="hero-buttons">
+        <a href="#shop" class="button primary">SHOP PRINTS <span>→</span></a>
+        <a href="#custom" class="button secondary">REQUEST A CUSTOM PRINT <span>→</span></a>
+      </div>
+
+      <div class="hero-socials">
+        <span>FOLLOW C4PRINTZ</span>
+        <a href="https://www.youtube.com/@C4printz" target="_blank" rel="noopener">YouTube ↗</a>
+        <a href="https://www.tiktok.com/@c4printz" target="_blank" rel="noopener">TikTok ↗</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="glow"></div>
+      <div class="hero-object">🖨️</div>
+      <div class="floating-card one">CUSTOM</div>
+      <div class="floating-card two">MADE TO ORDER</div>
+    </div>
+  </section>
+
+  <section class="section shop" id="shop">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">THE COLLECTION</span>
+        <h2>🔥 FEATURED <span>PRINTS.</span></h2>
+      </div>
+      <p>Browse the current C4Printz collection. Product pricing and options can be filled in as each print is finalized.</p>
+    </div>
+
+    <div class="products" id="products"></div>
+    <p class="placeholder-note">Product prices, filament colors, sizes, and print times are marked for you to add when finalized.</p>
+  </section>
+
+  <section class="section how-it-works" id="how-it-works">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">THE PROCESS</span>
+        <h2>HOW IT <span>WORKS.</span></h2>
+      </div>
+    </div>
+
+    <div class="steps">
+      <article class="step-card"><span>01</span><h3>Choose</h3><p>Choose a print from our collection or request a custom print.</p></article>
+      <article class="step-card"><span>02</span><h3>Send</h3><p>Send us your order or STL file and any special instructions.</p></article>
+      <article class="step-card"><span>03</span><h3>We Print</h3><p>We prepare the file, print your creation, and check the finished product.</p></article>
+      <article class="step-card"><span>04</span><h3>Get It</h3><p>Your finished print is ready for pickup or shipping.</p></article>
+    </div>
+  </section>
+
+  <section class="section custom-section" id="custom">
+    <div class="custom">
+      <div class="custom-copy">
+        <span class="eyebrow">HAVE AN IDEA?</span>
+        <h2>WE CAN <span>PRINT IT.</span></h2>
+        <p>Have your own STL file or an idea for something you want 3D printed? Send it to C4Printz and we’ll take a look.</p>
+
+        <div class="custom-features">
+          <div><b>01</b><span>Send your idea or file</span></div>
+          <div><b>02</b><span>Choose your options</span></div>
+          <div><b>03</b><span>We'll review it</span></div>
+        </div>
+      </div>
+
+      <form class="custom-box" id="customForm" onsubmit="addCustomToCart(event)">
+        <div class="upload-icon">↥</div>
+        <h3>REQUEST A CUSTOM PRINT</h3>
+        <p>Give us the details below. Your request can be reviewed before anything is paid for.</p>
+
+        <div class="form-grid">
+          <div>
+            <label class="label" for="customName">NAME</label>
+            <input id="customName" class="form-input" type="text" placeholder="Your name">
+          </div>
+          <div>
+            <label class="label" for="customContact">EMAIL / CONTACT</label>
+            <input id="customContact" class="form-input" type="text" placeholder="How should we contact you?">
+          </div>
+        </div>
+
+        <label class="label" for="customDescription">WHAT DO YOU WANT PRINTED?</label>
+        <textarea id="customDescription" placeholder="Tell us what you want printed..."></textarea>
+
+        <div class="form-grid three">
+          <div>
+            <label class="label" for="customSize">APPROXIMATE SIZE</label>
+            <input id="customSize" class="form-input" type="text" placeholder="Example: 4 inches">
+          </div>
+          <div>
+            <label class="label" for="customColor">COLOR</label>
+            <input id="customColor" class="form-input" type="text" placeholder="Preferred color">
+          </div>
+          <div>
+            <label class="label" for="customQuantity">QUANTITY</label>
+            <input id="customQuantity" class="form-input" type="number" min="1" value="1">
+          </div>
+        </div>
+
+        <label class="label">STL / FILE</label>
+        <label class="upload-button">
+          <span>Choose STL / CAD / 3D File</span>
+          <input type="file" id="customFile" accept=".stl,.obj,.3mf,.step,.stp,.iges,.igs,.f3d,.fcstd,.blend">
+        </label>
+        <div id="fileName"></div>
+
+        <label class="label" for="customNotes">ADDITIONAL NOTES</label>
+        <textarea id="customNotes" placeholder="Anything else we should know?"></textarea>
+
+        <button class="custom-button" type="submit">ADD REQUEST TO CART →</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="about-card">
+      <div>
+        <span class="eyebrow">WHO WE ARE</span>
+        <h2>ABOUT <span>C4PRINTZ.</span></h2>
+      </div>
+      <p>C4Printz is a small 3D-printing business focused on making unique, useful, and custom creations. Whether you’re looking for something from our collection or have an idea of your own, we’re here to bring it to life.</p>
+    </div>
+  </section>
+
+  <section class="section reviews" id="reviews">
+    <div class="section-header centered">
+      <span class="eyebrow">REAL CUSTOMERS</span>
+      <h2>WHAT CUSTOMERS <span>SAY.</span></h2>
+      <p>No reviews have been added yet.</p>
+    </div>
+    <div class="review-empty">
+      <div class="review-stars">★★★★★</div>
+      <h3>Be one of our first customers!</h3>
+      <p>Real customer reviews will appear here once C4Printz has them.</p>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">QUESTIONS</span>
+        <h2>FAQ <span>.</span></h2>
+      </div>
+    </div>
+
+    <div class="faq-list">
+      <details><summary>How long do prints take?<span>+</span></summary><p>Printing time depends on the size and complexity of the print.</p></details>
+      <details><summary>Can I choose the color?<span>+</span></summary><p>Available filament colors will be listed for each product. Custom color requests can be included with a custom print request.</p></details>
+      <details><summary>Can you print my own STL file?<span>+</span></summary><p>Yes. Customers can submit an STL file for review.</p></details>
+      <details><summary>Can I request a custom design?<span>+</span></summary><p>Yes. Customers can send an idea and C4Printz can determine whether it can be made.</p></details>
+      <details><summary>Do you ship?<span>+</span></summary><p class="placeholder-text">[ADD SHIPPING INFORMATION]</p></details>
+      <details><summary>Do you offer local pickup?<span>+</span></summary><p class="placeholder-text">[ADD LOCAL PICKUP INFORMATION]</p></details>
+      <details><summary>How do I pay?<span>+</span></summary><p class="placeholder-text">[ADD ACCEPTED PAYMENT METHODS]</p></details>
+    </div>
+  </section>
+
+  <section class="section socials" id="socials">
+    <div class="section-header centered">
+      <span class="eyebrow">FOLLOW C4PRINTZ</span>
+      <h2>SEE WHAT'S <span>NEW.</span></h2>
+      <p>See new prints, behind-the-scenes videos, and upcoming products.</p>
+    </div>
+
+    <div class="social-grid">
+      <a href="https://www.tiktok.com/@c4printz" target="_blank" rel="noopener" class="social-card">
+        <div class="social-icon">♪</div>
+        <div><b>TikTok</b><span>@c4printz</span></div><strong>↗</strong>
+      </a>
+      <a href="https://www.youtube.com/@C4printz" target="_blank" rel="noopener" class="social-card">
+        <div class="social-icon">▶</div>
+        <div><b>YouTube</b><span>@C4printz</span></div><strong>↗</strong>
+      </a>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <span class="eyebrow">CONTACT C4PRINTZ</span>
+    <h2>LET'S MAKE<br>SOMETHING <span>COOL.</span></h2>
+    <p>Have a question or custom idea? Email <a class="email-link" href="mailto:c4rocks@icloud.com">c4rocks@icloud.com</a>.</p>
+  </section>
+</main>
 
 <footer>
-
-<div class="footer-logo">
-C4<span>PRINTZ</span>
-</div>
-
-<p>
-Custom prints. Made different.
-</p>
-
-<div class="footer-links">
-
-<a href="#shop">Shop</a>
-<a href="#custom">Custom</a>
-<a href="#socials">Socials</a>
-
-</div>
-
-<small>
-© 2026 C4Printz. All rights reserved.
-</small>
-
+  <div class="footer-logo">C4<span>PRINTZ</span></div>
+  <p>3D Prints. Custom Creations. Your Ideas.</p>
+  <div class="footer-links">
+    <a href="#home">Home</a><a href="#shop">Shop</a><a href="#custom">Custom Prints</a>
+    <a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+  </div>
+  <small>© 2026 C4Printz. All rights reserved.</small>
 </footer>
 
-
 <!-- PRODUCT MODAL -->
+<div class="modal" id="productModal" onclick="closeModal(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeProduct()" aria-label="Close product">×</button>
+    <div class="modal-image">
+      <img id="modalPhoto" alt="">
+      <div id="modalEmoji">📦</div>
+    </div>
+    <div class="modal-details">
+      <span class="eyebrow">C4PRINTZ PRODUCT</span>
+      <h2 id="modalName">Product</h2>
+      <div class="price-line" id="modalPrice">PRICE: [ADD PRICE]</div>
+      <p id="modalDescription"></p>
 
-<div
-class="modal"
-id="productModal"
-onclick="closeModal(event)"
->
+      <div class="detail-grid">
+        <div><span>COLORS</span><strong id="modalColors">[ADD COLORS]</strong></div>
+        <div><span>PRINT TIME</span><strong id="modalTime">[ADD PRINT TIME]</strong></div>
+      </div>
 
-<div
-class="modal-box"
-onclick="event.stopPropagation()"
->
+      <label class="modal-label" for="modalColor">COLOR</label>
+      <select id="modalColor" class="modal-select"></select>
 
-<button
-class="modal-close"
-onclick="closeProduct()"
->
-×
-</button>
+      <label class="modal-label" for="modalSize">SIZE / OPTION</label>
+      <select id="modalSize" class="modal-select"></select>
 
-<div class="modal-image">
+      <label class="modal-label">QUANTITY</label>
+      <div class="quantity">
+        <button onclick="changeQuantity(-1)" aria-label="Decrease quantity">−</button>
+        <strong id="quantityValue">1</strong>
+        <button onclick="changeQuantity(1)" aria-label="Increase quantity">+</button>
+      </div>
 
-<img
-id="modalPhoto"
-alt="Product"
->
-
-<div id="modalEmoji">
-🐉
+      <button class="custom-button" onclick="addModalProduct()">ADD TO CART →</button>
+    </div>
+  </div>
 </div>
-
-</div>
-
-
-<div class="modal-details">
-
-<span class="eyebrow">
-C4PRINTZ
-</span>
-
-<h2 id="modalName">
-Product
-</h2>
-
-<p id="modalDescription">
-Product description.
-</p>
-
-
-<label class="modal-label">
-COLOR
-</label>
-
-<select
-id="modalColor"
-class="modal-select"
->
-
-<option>Black</option>
-<option>White</option>
-<option>Red</option>
-<option>Blue</option>
-<option>Green</option>
-<option>Yellow</option>
-
-</select>
-
-
-<label class="modal-label">
-SIZE
-</label>
-
-<select
-id="modalSize"
-class="modal-select"
->
-
-<option>Small</option>
-<option>Medium</option>
-<option>Large</option>
-
-</select>
-
-
-<label class="modal-label">
-QUANTITY
-</label>
-
-<div class="quantity">
-
-<button onclick="changeQuantity(-1)">
-−
-</button>
-
-<strong id="quantityValue">
-1
-</strong>
-
-<button onclick="changeQuantity(1)">
-+
-</button>
-
-</div>
-
-
-<button
-class="custom-button"
-onclick="addModalProduct()"
->
-Add To Cart →
-</button>
-
-</div>
-
-</div>
-
-</div>
-
 
 <!-- CART -->
-
-<div
-class="modal"
-id="cartModal"
-onclick="closeCart(event)"
->
-
-<div
-class="cart-box"
-onclick="event.stopPropagation()"
->
-
-<button
-class="modal-close"
-onclick="closeCart()"
->
-×
-</button>
-
-<span class="eyebrow">
-YOUR ORDER
-</span>
-
-<h2>
-CART
-</h2>
-
-<div id="cartItems"></div>
-
-<button
-class="custom-button"
-onclick="requestOrder()"
->
-Checkout →
-</button>
-
+<div class="modal" id="cartModal" onclick="closeCart(event)">
+  <div class="cart-box" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeCart()" aria-label="Close cart">×</button>
+    <span class="eyebrow">YOUR ORDER</span>
+    <h2>CART</h2>
+    <div id="cartItems"></div>
+    <div class="cart-total"><span>Items</span><strong id="cartTotalItems">0</strong></div>
+    <button class="custom-button" onclick="requestOrder()">REQUEST ORDER →</button>
+    <p class="cart-note">No payment is taken by this demo cart. Final pricing and order details can be confirmed before payment.</p>
+  </div>
 </div>
 
-</div>
-
-
-<script>
-
-/* =========================
-CART
-========================= */
-
-let cart=[];
-let currentProduct=null;
-let quantity=1;
-
-
-/* =========================
-PRODUCT
-========================= */
-
-function viewProduct(name,emoji,image,description){
-
-currentProduct={
-name:name,
-emoji:emoji,
-image:image,
-description:description
-};
-
-quantity=1;
-
-document.getElementById("quantityValue").textContent="1";
-
-document.getElementById("modalName").textContent=name;
-
-document.getElementById("modalDescription").textContent=description;
-
-document.getElementById("modalEmoji").textContent=emoji;
-
-const photo=document.getElementById("modalPhoto");
-
-photo.style.display="none";
-
-if(image){
-
-photo.src=image;
-
-photo.onload=function(){
-
-photo.style.display="block";
-
-document.getElementById("modalEmoji").style.display="none";
-
-};
-
-photo.onerror=function(){
-
-photo.style.display="none";
-
-document.getElementById("modalEmoji").style.display="block";
-
-};
-
-}
-
-document.getElementById("productModal").classList.add("show");
-
-}
-
-
-/* =========================
-QUANTITY
-========================= */
-
-function changeQuantity(amount){
-
-quantity+=amount;
-
-if(quantity<1){
-quantity=1;
-}
-
-if(quantity>99){
-quantity=99;
-}
-
-document.getElementById("quantityValue").textContent=quantity;
-
-}
-
-
-/* =========================
-ADD PRODUCT
-========================= */
-
-function addModalProduct(){
-
-if(!currentProduct){
-return;
-}
-
-const color=document.getElementById("modalColor").value;
-
-const size=document.getElementById("modalSize").value;
-
-cart.push({
-
-name:currentProduct.name,
-
-color:color,
-
-size:size,
-
-quantity:quantity,
-
-emoji:currentProduct.emoji
-
-});
-
-updateCart();
-
-closeProduct();
-
-openCart();
-
-}
-
-
-/* =========================
-CLOSE PRODUCT
-========================= */
-
-function closeProduct(){
-
-document
-.getElementById("productModal")
-.classList.remove("show");
-
-}
-
-
-function closeModal(event){
-
-if(event.target.classList.contains("modal")){
-
-event.target.classList.remove("show");
-
-}
-
-}
-
-
-/* =========================
-CUSTOM FILE
-========================= */
-
-function previewCAD(event){
-
-const file=event.target.files[0];
-
-document.getElementById("fileName").textContent=
-file
-?"Selected: "+file.name
-:"";
-
-}
-
-
-/* =========================
-CUSTOM REQUEST
-========================= */
-
-function addCustomToCart(){
-
-const file=document.getElementById("customFile").files[0];
-
-const description=
-document
-.getElementById("customDescription")
-.value
-.trim();
-
-const color=
-document
-.getElementById("customColor")
-.value;
-
-const size=
-document
-.getElementById("customSize")
-.value;
-
-if(!file && !description){
-
-alert(
-"Please upload an STL/CAD file or describe what you want."
-);
-
-return;
-
-}
-
-cart.push({
-
-name:"Custom Print",
-
-color:color,
-
-size:size,
-
-quantity:1,
-
-fileName:file
-?file.name
-:"No file",
-
-description:
-description||"Custom print request"
-
-});
-
-document.getElementById("customFile").value="";
-
-document.getElementById("customDescription").value="";
-
-document.getElementById("fileName").textContent="";
-
-updateCart();
-
-openCart();
-
-}
-
-
-/* =========================
-CART
-========================= */
-
-function updateCart(){
-
-const box=
-document.getElementById("cartItems");
-
-const count=
-document.getElementById("cartCount");
-
-count.textContent=cart.reduce(
-(total,item)=>total+(item.quantity||1),
-0
-);
-
-if(!cart.length){
-
-box.innerHTML=
-'<div class="empty-cart">Your cart is empty.</div>';
-
-return;
-
-}
-
-box.innerHTML="";
-
-cart.forEach((item,index)=>{
-
-const el=document.createElement("div");
-
-el.className="cart-item";
-
-el.innerHTML=`
-
-<div>
-
-<strong>
-${escapeHTML(item.emoji||"📦")}
-&nbsp;
-${escapeHTML(item.name)}
-</strong>
-
-<small>
-
-Color: ${escapeHTML(item.color||"Not selected")}
-
-<br>
-
-Size: ${escapeHTML(item.size||"Not selected")}
-
-<br>
-
-Quantity: ${item.quantity||1}
-
-${item.fileName
-?`<br>File: ${escapeHTML(item.fileName)}`
-:""}
-
-${item.description
-?`<br>${escapeHTML(item.description)}`
-:""}
-
-</small>
-
-</div>
-
-<button onclick="removeItem(${index})">
-×
-</button>
-
-`;
-
-box.appendChild(el);
-
-});
-
-}
-
-
-/* =========================
-REMOVE
-========================= */
-
-function removeItem(index){
-
-cart.splice(index,1);
-
-updateCart();
-
-}
-
-
-/* =========================
-OPEN CART
-========================= */
-
-function openCart(){
-
-updateCart();
-
-document
-.getElementById("cartModal")
-.classList.add("show");
-
-}
-
-
-function closeCart(event){
-
-if(
-!event ||
-event.target.id==="cartModal"
-){
-
-document
-.getElementById("cartModal")
-.classList.remove("show");
-
-}
-
-}
-
-
-/* =========================
-CHECKOUT
-========================= */
-
-function requestOrder(){
-
-if(!cart.length){
-
-alert("Your cart is empty.");
-
-return;
-
-}
-
-alert(
-"Thanks for your order request! 🎉\n\n"+
-"C4Printz is still working on the online checkout system.\n\n"+
-"No payment has been taken."
-);
-
-}
-
-
-/* =========================
-SECURITY
-========================= */
-
-function escapeHTML(text){
-
-const div=document.createElement("div");
-
-div.textContent=text;
-
-return div.innerHTML;
-
-}
-
-
-/* =========================
-ESC KEY
-========================= */
-
-document.addEventListener(
-"keydown",
-function(event){
-
-if(event.key==="Escape"){
-
-closeProduct();
-
-closeCart();
-
-}
-
-}
-);
-
-
-/* START */
-
-updateCart();
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
-```
